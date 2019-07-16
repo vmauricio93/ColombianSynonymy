@@ -4,5 +4,5 @@ const Neode = require('neode');
 
 // Exportar la instancia de la sesion de neo4j para usarla en otros lados (controladores)
 module.exports =  
-    new Neode('bolt://localhost:7687', 'neo4j', '123')
+    new Neode('https://colombian-synonymy.herokuapp.com', 'neo4j', '123')
         .withDirectory(__dirname + '/models');
