@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div >
+            <div class="card">
+                <div class="card-content">
+                    <!-- se maneja desde el evento ngSubmit con la funcion addWord que toma como parametro el formulario (variable #wordForm) -->
+                    <form #wordForm = "ngForm" (ngSubmit)="addWord(wordForm)" autocomplete="off">
+                        <div class="row">     
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] = "wordService.selectedWord._id">                
+                            <div class="input-field col s12">
+                                <input type="text" name="lema" #lema = "ngModel" [(ngModel)] = "wordService.selectedWord.lema" placeholder="Ingrese un lema">    
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="idLema" #idLema = "ngModel" [(ngModel)] = "wordService.selectedWord.idLema" placeholder="Ingrese un ID para el lema">  
+                            </div>
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn right">Guardar</button>
+                                    <button class="btn left" (click) = "resetForm(wordForm)">Limpiar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div>
+            <table class="responsive-table">
+                <thead>
+                    <th>idLema</th>
+                    <th>Lema</th>
+                    <th>Opciones</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let word of wordService.words">
+                        <td>{{ word.idLema }}</td>
+                        <td>{{ word.lema }}</td>
+                        <td>
+                            <a (click) = "editWord(word)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a (click) = "deleteWord(word)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

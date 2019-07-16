@@ -1,0 +1,31 @@
+<div *ngFor = "let result of wordService.results">
+    <div class="row">
+        <div class="col s9">
+            <h5>{{ result.lema }}</h5>
+            <div class="card">
+                <div class="card-content">
+                    <div *ngFor = "let definicion of result.definiciones">
+                        <p>{{ definicion }}</p>
+                    </div>
+                </div>
+                <div *ngIf = "result.sinonimos">             
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width">
+                            <li class="tab"><a class="active">Sinónimos</a></li>
+                            <li class="tab"></li>
+                            <li class="tab"></li>
+                            <li class="tab"></li>
+                        </ul>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                        <div style="display:inline-block;" *ngFor = "let sinonimo of result.sinonimos">
+                            <a class="col" [routerLink]="['/entrada', sinonimo]">{{ sinonimo }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
