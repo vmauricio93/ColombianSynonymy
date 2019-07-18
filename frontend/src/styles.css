@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+/*COLORES #c62828 #BC8379 #FFF6F3 #798897*/
+
+html {
+    background-color: #FFF6F3;
+}
+
+
+/*Estilos para los elementos que genera materialize.js*/
+.dropdown-content li>a, .dropdown-content li>span {
+    color: #c62828!important;
+}
+
+/*Estilos para el grid de la busqueda*/
+
+.grid {
+    max-width: 100%;
+}
+
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.grid-sizer,
+
+.grid-item {
+    width: 22%;
+}
+
+.grid-item {
+    float: left;
+    margin: 0 0.5% 0 0.5%;
+}
+
+.grid-item a:hover {
+    color: #798897;
+}
+
+.grid-item--width2 { width:  60%; }
+.grid-item--width3 { width:  80%; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }

@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private searchService : SearchService, private router : Router, private wordService : WordService, private route : ActivatedRoute) { }
 
   ngOnInit() {
+
     this.searchService.getData();
     this.subscription = this.route.paramMap
     .subscribe(paramMap => {
@@ -29,9 +30,11 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   
   ngAfterViewInit() {
+    
     if(this.lema !== '_') {
       this.search(this.lema);
     }
+    
   }
 
   ngOnDestroy() {

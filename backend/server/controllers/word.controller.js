@@ -99,7 +99,11 @@ wordCtrl.searchWord = (req, res) => {
     
     instance.cypher("MATCH p=(n :Lema)-[]-(m) WHERE n.lema =~ "
         + "'(?i)" + req.params.lema
-        + ".*' RETURN DISTINCT labels(n) as labelLema,n as lema,COLLECT([relationships(p),m]) as relacion")
+        + ".*' RETURN DISTINCT labels(n) as labelLema,n as lema,COLLECT([relationships(p),m]) as relacion"
+        + ",COLLECT(DISTINCT [(n:Lema)-[:TIENE]->(:Definicion)<-[:TIENE]-(x:Lema) "
+        + "WHERE x <> n AND NOT x:Variante AND NOT x:Expresion | x]) as sinonimos"
+        + ",COLLECT(DISTINCT [(n:Lema)-[:TIENE]->(j:Definicion)<-[:TIENE]-(x:Lema)"
+        + "WHERE x <> n AND NOT x:Variante AND NOT x:Expresion | j]) as definiciones")
     .then(results => {
         var resultsArr = [];
         results.records.forEach(record => {
@@ -108,17 +112,37 @@ wordCtrl.searchWord = (req, res) => {
             var variantesArr = [];
             var definicionesArr = [];
             var sinonimosArr = [];
+            var definSinonArr = [];
 
             record._fields[2].forEach(node => {
                 var relacion = node[0][0].properties;
-                var tipoRelacion = relacion[Object.keys(relacion)[0]]; 
+                console.log(relacion);
+                
+                var tipoRelacion = relacion['tiene'] || relacion['es']; 
 
                 if (tipoRelacion == 'Expresion') expresionesArr.push(node[1].properties.lema);           
                 if (tipoRelacion == 'Variante') variantesArr.push(node[1].properties.lema);
-                if (tipoRelacion == 'Definicion') definicionesArr.push(node[1].properties.enunciadoDef);
-                if (tipoRelacion == 'Sinonimo') sinonimosArr.push(node[1].properties.lema);
+                if (tipoRelacion == 'Definicion') {
+                    definicionesArr.push(node[1].properties.enunciadoDef);
+                } //usar esta para marcas y ejemplos
                 
-            })           
+            });
+
+           record._fields[3].forEach(nodes => {
+                sinonimosArr = nodes.map(node => {
+                    return node.properties.lema;
+               });
+            });
+
+            record._fields[4].forEach(nodes => {
+                 definSinonArr = nodes.map(node => {
+                     return node.properties.enunciadoDef;
+                });
+             });
+
+            for (i=0; i < sinonimosArr.length; i++) {
+                sinonimosArr[i] = [sinonimosArr[i], definSinonArr[i]];                
+            }
 
             resultsArr.push({
                 _id : record._fields[1].identity.low,
@@ -130,8 +154,9 @@ wordCtrl.searchWord = (req, res) => {
                 definiciones : definicionesArr.length > 0 ? definicionesArr : ['Véase ' + variantesArr],
                 sinonimos : sinonimosArr.length > 0 ? sinonimosArr : undefined //TODO: sinonimos deben ir asociados a la definición (no solo al lema). Usar queries según el camino?
 
-            })
-        })
+            });
+        });
+        
         res.send(resultsArr);
         
     })

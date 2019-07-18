@@ -15,8 +15,8 @@
                             </div>
                             <div class="card-action">
                                 <div class="input-field col s12">
-                                    <button class="btn right">Guardar</button>
-                                    <button class="btn left" (click) = "resetForm(wordForm)">Limpiar</button>
+                                    <button class="btn right red darken-4">Guardar</button>
+                                    <button class="btn left red darken-4" (click) = "resetForm(wordForm)">Limpiar</button>
                                 </div>
                             </div>
                         </div>
@@ -37,10 +37,10 @@
                         <td>{{ word.lema }}</td>
                         <td>
                             <a (click) = "editWord(word)">
-                                <i class="material-icons">edit</i>
+                                <i class="material-icons red-text text-darken-3">edit</i>
                             </a>
                             <a (click) = "deleteWord(word)">
-                                <i class="material-icons">delete</i>
+                                <i class="material-icons red-text text-darken-3">delete</i>
                             </a>
                         </td>
                     </tr>
