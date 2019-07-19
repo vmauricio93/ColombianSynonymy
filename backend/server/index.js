@@ -5,6 +5,7 @@ const morgan = require('morgan'); //para ver por consola lo que el usuario pide
 const app = express(); //app contiene toda la funcionalidad del servidor
 //const instance = require('./database'); //traer la sesión de neo4j desde database.js
 const cors = require('cors');
+const path = require('path');
 
 // Configuración del servidor
 
@@ -16,6 +17,9 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(express.json()); //para que el servidor entienda los datos en formato json que vienen del navegador
 app.use(cors()); // definir que servidores externos se pueden comunicar con este
+
+//Directorio de archivos estáticos (app de angular/frontend)
+app.use(express.static(path.join(__dirname,'../../frontend/dist/frontend')));
 
 // Rutas
 app.use('/api/entradas', require('./routes/words.routes')); // /prefijo/otroPrefijo/ se agrega antes del path que se le está pasando desde las rutas
