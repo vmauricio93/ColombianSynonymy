@@ -39,9 +39,9 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   
   ngAfterViewInit() {
     
-    // if(this.lema !== '_') {
-    //   this.search(this.lema);
-    // }
+    if(this.lema !== '_') {
+      this.search(this.lema);
+    }
     
   }
 
@@ -61,7 +61,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     if(searchedWord != null && searchedWord.trim().length !== 0) {
-      this.router.navigate(['/entrada', searchedWord]);
+      this.router.navigate(['/entrada', searchedWord]); // TODO: Esto hace que se llame el método dos veces
     } else {
       this.router.navigate(['/entrada', '_']);
     }

@@ -42,10 +42,7 @@ export class NeovisService {
   }
 
   draw() {
-    this.contador += 1;
-    this.viz = new NeoVis.default(this.config);
-    console.log(this.contador);
-    
+    this.viz = new NeoVis.default(this.config);   
     return this.viz.render();
   }
 

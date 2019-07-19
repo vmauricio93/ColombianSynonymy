@@ -20,6 +20,10 @@ ol {
     
 }
 
+.fuente {
+    font-size: small;
+}
+
 span:empty {
     display: none;
 }

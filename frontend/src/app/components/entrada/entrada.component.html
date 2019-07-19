@@ -18,7 +18,7 @@
                             <span class="cursiva">{{ result.definiciones['marcaRegional'][i] }} {{ result.definiciones['marcaUso'][i] }}</span><br>
                             <span>{{ definicion }}.</span>
                             <span class="cursiva">{{ result.definiciones['ejemplo'][i] }}</span>
-                            <span>{{ result.definiciones['fuenteEjemplo'][i] }}</span>
+                            <span class="fuente">{{ result.definiciones['fuenteEjemplo'][i] }}</span>
                         </li>
                         <div class="sinonimos" *ngFor = "let sinonimo of result.sinonimos">
                             <a *ngIf = "sinonimo[1] === definicion" class="col" [routerLink]="['/entrada', sinonimo[0]]"> {{ sinonimo[0] }} &nbsp;</a>
