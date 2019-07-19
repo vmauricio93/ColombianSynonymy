@@ -13,6 +13,7 @@ export class NeovisService {
 
   constructor() {
     this.config = {
+      encrypted: "ENCRYPTION_ON",
       container_id: "viz",
       server_url: "bolt://hobby-hjjfgenlakdagbkeidbgijdl.dbs.graphenedb.com:24787",
       server_user: "coltest",
