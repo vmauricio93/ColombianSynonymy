@@ -14,9 +14,9 @@ export class NeovisService {
   constructor() {
     this.config = {
       container_id: "viz",
-      server_url: "bolt://localhost:7687",
-      server_user: "neo4j",
-      server_password: "123",
+      server_url: "bolt://hobby-hjjfgenlakdagbkeidbgijdl.dbs.graphenedb.com:24787",
+      server_user: "coltest",
+      server_password: "b.lTeC6LXhZkGp.XogYXwRqindRVqXX",
       labels: {
           "Lema": {
               caption: "lema",
