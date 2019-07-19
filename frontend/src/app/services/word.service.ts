@@ -13,7 +13,7 @@ export class WordService {
   results : Entrada[];
   words: Lema[];
 
-  readonly URL_API = 'http://localhost:3000/api/entradas';
+  readonly URL_API = 'api/entradas';
 
   constructor(private http : HttpClient) { //instanciar el modulo HttpClient para tenerlo disponible en el servicio
     this.selectedWord = new Lema();

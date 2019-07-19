@@ -15,7 +15,8 @@ app.set('port', process.env.PORT || 3000);
 // Middlewares (Procesamiento de datos)
 app.use(morgan('dev'));
 app.use(express.json()); //para que el servidor entienda los datos en formato json que vienen del navegador
-app.use(cors({origin : 'http://localhost:4200'})); // definir que servidores externos se pueden comunicar con este
+app.use(cors()); // definir que servidores externos se pueden comunicar con este
+
 // Rutas
 app.use('/api/entradas', require('./routes/words.routes')); // /prefijo/otroPrefijo/ se agrega antes del path que se le está pasando desde las rutas
 
