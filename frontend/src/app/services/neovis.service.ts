@@ -15,7 +15,7 @@ export class NeovisService {
     this.config = {
       encrypted: "ENCRYPTION_ON",
       container_id: "viz",
-      server_url: "bolt://hobby-hjjfgenlakdagbkeidbgijdl.dbs.graphenedb.com:24787",
+      server_url: "bolt://hobby-hjjfgenlakdagbkeidbgijdl.dbs.graphenedb.com:24787", //No funciona en GrapheneDB por seguridad!
       server_user: "coltest",
       server_password: "b.lTeC6LXhZkGp.XogYXwRqindRVqXX",
       labels: {
