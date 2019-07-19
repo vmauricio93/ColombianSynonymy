@@ -9,6 +9,7 @@ export class NeovisService {
 
   config : any;
   viz : any;
+  contador = 0;
 
   constructor() {
     this.config = {
@@ -41,12 +42,16 @@ export class NeovisService {
   }
 
   draw() {
+    this.contador += 1;
     this.viz = new NeoVis.default(this.config);
+    console.log(this.contador);
     
     return this.viz.render();
   }
 
   reload (lema : string) {
+    
+    
     if (lema != '' && lema != null){
       
       this.config.labels['Lema'].community = (node) => node.properties.lema.toLowerCase().startsWith(lema.toLowerCase()) ? 1 : 0;
@@ -56,7 +61,7 @@ export class NeovisService {
     } else {
       this.config.initial_cypher = 'MATCH (n :Lema) WITH n MATCH (m:Lema)-[r]-(o:Lema) RETURN *';
     }
-   
+    
     this.draw();
   }
 }

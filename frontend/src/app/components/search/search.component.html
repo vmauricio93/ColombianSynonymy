@@ -17,23 +17,25 @@
 </div>
 
 <div class="container">
- 
-        <app-neovis></app-neovis>
-
-
-    
-        <div *ngIf = "!wordService.results || wordService.results.length == 0">
-            <div class="grid-item">
+    <div class="grid">
+        <div>
+            <app-neovis></app-neovis>
+        </div>
+            <div *ngIf = "!wordService.results || wordService.results.length == 0">
+                <div class="grid-item">
                     <div class="card">
                         <div class="card-content">
                             <p>No se encontraron resultados</p>
                         </div>
                     </div>
+                </div>
             </div>
+        
+        
+        
+        <div>
+            <app-entrada></app-entrada>
         </div>
- 
-    <div >
-        <app-entrada></app-entrada>
     </div>
-
+    
 </div>

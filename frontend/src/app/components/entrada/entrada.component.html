@@ -1,15 +1,27 @@
-<div class="grid">
-    <div class="grid-sizer"></div>
+<div>
+    
     <div class="grid-item" *ngFor = "let result of wordService.results">
-        
-        <h5>{{ result.lema }}</h5>
+
+        <h5>{{ result.lema }}&nbsp;</h5>
+        <span *ngIf = "result.varianteDe" >(tb.
+            <div class="variantes" *ngFor="let variante of result.varianteDe">
+                <a [routerLink]="['/entrada', variante]">{{ variante }}</a>
+            </div>
+            <span>)</span>
+        </span>
         <div class="card">
             <div class="card-content">
-                <ol style="font-weight: bold;"> 
-                    <div *ngFor = "let definicion of result.definiciones">
-                        <li><span style="font-weight: normal;">{{ definicion }}</span></li>
-                        <div style="display:inline-block;" *ngFor = "let sinonimo of result.sinonimos">
-                            <a *ngIf = "sinonimo[1] === definicion" class="col" [routerLink]="['/entrada', sinonimo[0]]">{{ sinonimo[0] }} &nbsp;</a>
+                <ol> 
+                    <div *ngFor = "let definicion of result.definiciones['definiciones'], let i = index;">
+                        <li>
+                            <span>{{ result.definiciones['marcaGramatical'][i] }}</span>
+                            <span class="cursiva">{{ result.definiciones['marcaRegional'][i] }} {{ result.definiciones['marcaUso'][i] }}</span><br>
+                            <span>{{ definicion }}.</span>
+                            <span class="cursiva">{{ result.definiciones['ejemplo'][i] }}</span>
+                            <span>{{ result.definiciones['fuenteEjemplo'][i] }}</span>
+                        </li>
+                        <div class="sinonimos" *ngFor = "let sinonimo of result.sinonimos">
+                            <a *ngIf = "sinonimo[1] === definicion" class="col" [routerLink]="['/entrada', sinonimo[0]]"> {{ sinonimo[0] }} &nbsp;</a>
                         </div>
                     </div>
                 </ol>

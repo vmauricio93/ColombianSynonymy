@@ -11,10 +11,14 @@ html {
     color: #c62828!important;
 }
 
+label.active {
+    color: #c62828!important;
+}
+
 /*Estilos para el grid de la busqueda*/
 
 .grid {
-    max-width: 100%;
+    max-width: 1200px;
 }
 
 .grid:after {
@@ -26,10 +30,7 @@ html {
 .grid-sizer,
 
 .grid-item {
-    width: 22%;
-}
-
-.grid-item {
+    max-width: 44%;
     float: left;
     margin: 0 0.5% 0 0.5%;
 }
@@ -38,7 +39,11 @@ html {
     color: #798897;
 }
 
-.grid-item--width2 { width:  60%; }
+.grid-item--width2 {
+    float: right;
+    min-width: 54%;
+    margin: 0 0.2%;
+}
 .grid-item--width3 { width:  80%; }
 
 .grid-item--height2 { height: 200px; }

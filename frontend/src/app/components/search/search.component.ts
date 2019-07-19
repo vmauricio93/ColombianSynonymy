@@ -6,6 +6,7 @@ import { WordService } from 'src/app/services/word.service';
 import { Lema } from 'src/app/models/lema';
 import { Entrada } from 'src/app/models/entrada';
 
+declare var $ : any;
 
 @Component({
   selector: 'app-search',
@@ -25,15 +26,22 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription = this.route.paramMap
     .subscribe(paramMap => {
       this.lema = paramMap.get('lema');
-      this.search(this.lema)
+      this.search(this.lema);
     });
+    
+    var $grid = $('.grid').packery({
+      columnWidth: '.grid-sizer',
+      itemSelector: '.grid-item',
+      percentPosition: true
+    })
+    
   }
   
   ngAfterViewInit() {
     
-    if(this.lema !== '_') {
-      this.search(this.lema);
-    }
+    // if(this.lema !== '_') {
+    //   this.search(this.lema);
+    // }
     
   }
 
@@ -48,7 +56,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     
     if(form.constructor.name !== 'NgForm') {
       searchedWord = form;
-    } else {
+    } else {      
       searchedWord = form.value.autocomplete;    
     }
 
@@ -57,10 +65,12 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.router.navigate(['/entrada', '_']);
     }
+    
     this.searchService.searchWord(searchedWord);
     this.wordService.searchWord(searchedWord)
       .subscribe(res => {
         this.wordService.results = res as Entrada[];
+        
       });
     this.searchService.getData();
     

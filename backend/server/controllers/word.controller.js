@@ -110,23 +110,39 @@ wordCtrl.searchWord = (req, res) => {
 
             var expresionesArr = [];
             var variantesArr = [];
-            var definicionesArr = [];
+
+            var definicionesArr = {};
+            definicionesArr['definiciones'] = [];
+            definicionesArr['marcaGramatical'] = [];
+            definicionesArr['marcaRegional'] = [];
+            definicionesArr['marcaUso'] = [];
+            definicionesArr['ejemplo'] = [];
+            definicionesArr['fuenteEjemplo'] = [];
+
             var sinonimosArr = [];
             var definSinonArr = [];
 
             record._fields[2].forEach(node => {
                 var relacion = node[0][0].properties;
-                console.log(relacion);
+                //console.log(relacion);
                 
                 var tipoRelacion = relacion['tiene'] || relacion['es']; 
 
                 if (tipoRelacion == 'Expresion') expresionesArr.push(node[1].properties.lema);           
                 if (tipoRelacion == 'Variante') variantesArr.push(node[1].properties.lema);
                 if (tipoRelacion == 'Definicion') {
-                    definicionesArr.push(node[1].properties.enunciadoDef);
+                    definicionesArr['definiciones'].push(node[1].properties.enunciadoDef);
+                    definicionesArr['marcaGramatical'].push(relacion['marcaGramatical'] || undefined);
+                    definicionesArr['marcaRegional'].push(relacion['marcaRegional'] || undefined);
+                    definicionesArr['marcaUso'].push(relacion['marcaUso'] || undefined);
+                    definicionesArr['ejemplo'].push(relacion['ejemplo'] || undefined);
+                    definicionesArr['fuenteEjemplo'].push(relacion['fuenteEjemplo'] || undefined);
                 } //usar esta para marcas y ejemplos
+              
                 
             });
+            
+            if (definicionesArr['definiciones'].length == 0) definicionesArr['definiciones'] = ['Véase ' + variantesArr];
 
            record._fields[3].forEach(nodes => {
                 sinonimosArr = nodes.map(node => {
@@ -151,7 +167,7 @@ wordCtrl.searchWord = (req, res) => {
                 expresiones : record._fields[0].includes('Expresion') || expresionesArr.length == 0 ? undefined : expresionesArr,
                 expresionDe : record._fields[0].includes('Expresion') ? expresionesArr : undefined,
                 varianteDe : variantesArr.length > 0 ? variantesArr : undefined,
-                definiciones : definicionesArr.length > 0 ? definicionesArr : ['Véase ' + variantesArr],
+                definiciones : definicionesArr,
                 sinonimos : sinonimosArr.length > 0 ? sinonimosArr : undefined //TODO: sinonimos deben ir asociados a la definición (no solo al lema). Usar queries según el camino?
 
             });

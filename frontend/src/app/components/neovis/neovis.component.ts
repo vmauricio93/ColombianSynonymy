@@ -12,7 +12,7 @@ export class NeovisComponent implements OnInit {
   constructor(private neovisService : NeovisService) { }
     
   ngOnInit() {
-    this.neovisService.draw();
+    //this.neovisService.draw();
   }
 
 }

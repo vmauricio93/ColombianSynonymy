@@ -7,7 +7,7 @@ export class Entrada {
         expresiones? : [], 
         expresionDe? : [], 
         varianteDe? : [], 
-        definiciones? : [], 
+        definiciones? : {}, 
         sinonimos? : []
         ) {
             this._id = _id;
@@ -26,7 +26,7 @@ export class Entrada {
     expresiones : string[];
     expresionDe : string[];
     varianteDe : string[];
-    definiciones : string[];
+    definiciones : object;
     sinonimos : string[];
     
 }
