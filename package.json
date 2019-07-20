@@ -21,7 +21,7 @@
     "morgan": "^1.9.1",
     "neo4j-driver": "^1.7.5",
     "neode": "^0.2.16",
-    "neovis.js": "file:../Escritorio/pruebavis/neovis.js-master"
+    "neovis.js": "github:vmauricio93/modifiedNeovis#master"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
