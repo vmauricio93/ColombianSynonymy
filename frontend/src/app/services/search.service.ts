@@ -12,7 +12,7 @@ export class SearchService {
 
   data : object;
 
-  constructor(private wordService : WordService, private neovisService : NeovisService) {
+  constructor(public wordService : WordService, public neovisService : NeovisService) {
     this.data = {};
    }
   

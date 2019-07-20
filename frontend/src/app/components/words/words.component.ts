@@ -1,11 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WordService } from '../../services/word.service';
-import { NgForm, FormsModule } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Lema } from 'src/app/models/lema';
 import { NeovisService } from 'src/app/services/neovis.service';
 import { SearchService } from 'src/app/services/search.service';
 
 declare var M : any; // para que no tome la variable M desde typescript sino desde materialize (ya fue declarada)
+
 @Component({
   selector: 'app-words',
   templateUrl: './words.component.html',
@@ -14,7 +15,9 @@ declare var M : any; // para que no tome la variable M desde typescript sino des
 })
 export class WordsComponent implements OnInit {
 
-  constructor(private wordService : WordService, private neovisService : NeovisService, private searchService : SearchService) { }
+  constructor(public wordService : WordService,
+    public neovisService : NeovisService,
+    public searchService : SearchService) { }
 
   ngOnInit() {
     this.getWords();
@@ -39,7 +42,6 @@ export class WordsComponent implements OnInit {
           this.getWords();
         });        
     }
-    //console.log(this.wordService.words);
   }
 
   getWords() {
@@ -47,7 +49,6 @@ export class WordsComponent implements OnInit {
       .subscribe(res => {
         this.wordService.words = res as Lema[];       
       })
-      //this.searchService.getData();
   }
 
   editWord(word : Lema) {

@@ -8,7 +8,7 @@ import { WordService } from 'src/app/services/word.service';
 })
 export class EntradaComponent implements OnInit {
 
-  constructor(private wordService : WordService) { } // se usa wordService en el css
+  constructor(public wordService : WordService) { } // se usa wordService en el html
   
   ngOnInit() {
         

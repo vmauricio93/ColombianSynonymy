@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
-import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WordService } from 'src/app/services/word.service';
-import { Lema } from 'src/app/models/lema';
 import { Entrada } from 'src/app/models/entrada';
 
 declare var $ : any;
@@ -18,10 +16,10 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   lema : string;
   private subscription : any;
 
-  constructor(private searchService : SearchService,
-    private router : Router,
-    private wordService : WordService,
-    private route : ActivatedRoute) { }
+  constructor(public searchService : SearchService,
+    public router : Router,
+    public wordService : WordService,
+    public route : ActivatedRoute) { }
 
   ngOnInit() {
 

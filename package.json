@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon backend/server/index.js",
-    "prod": "NODE_ENV='production' npx pm2 backend/server/index.js",
+    "prod": "NODE_ENV='production' nodemon backend/server/index.js",
     "start": "node backend/server/index.js"
   },
   "repository": {
@@ -21,7 +21,7 @@
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "neo4j-driver": "^1.7.5",
-    "neode": "^0.2.16",
+    "neode": "^0.2.18",
     "neovis.js": "github:vmauricio93/modifiedNeovis#master"
   },
   "devDependencies": {
