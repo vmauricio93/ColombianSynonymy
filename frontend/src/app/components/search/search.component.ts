@@ -18,7 +18,10 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   lema : string;
   private subscription : any;
 
-  constructor(private searchService : SearchService, private router : Router, private wordService : WordService, private route : ActivatedRoute) { }
+  constructor(private searchService : SearchService,
+    private router : Router,
+    private wordService : WordService,
+    private route : ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -26,7 +29,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription = this.route.paramMap
     .subscribe(paramMap => {
       this.lema = paramMap.get('lema');
-      this.search(this.lema);
+      //this.search(this.lema);
     });
     
     var $grid = $('.grid').packery({

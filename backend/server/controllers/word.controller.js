@@ -199,7 +199,7 @@ wordCtrl.neo4 = (req, res) => {
         labels: {
             "Lema": {
                 caption: "lema",
-                community: 0
+                community: (node) => node.properties.lema.toLowerCase().startsWith(lema.toLowerCase()) ? 1 : 0
             },
             "Definicion": {
               caption: (node) => node.properties.enunciadoDef.split(/((?:\w+ ){5})/g).filter(Boolean).join("\n"),
@@ -216,7 +216,7 @@ wordCtrl.neo4 = (req, res) => {
               thickness: 'es'
           }
         },
-        initial_cypher: "MATCH (n :Lema) WITH n MATCH (m:Lema)-[r]-(o:Lema) RETURN *"
+        initial_cypher: req.query.initial_cypher
       };
 
     const neovis = new NeoVis.default(
@@ -229,8 +229,7 @@ wordCtrl.neo4 = (req, res) => {
 
     //console.log(neovis); 
 
-    neovis.render(res);
-    
+    neovis.render(res);  
     
 
     // let session = driver.session();

@@ -51,4 +51,10 @@ export class WordService {
   searchWord(lema : string) {
     return this.http.get(this.URL_API + '/resultados' + `/${lema}`);
   }
+
+  queryToNeovis(lema : string, query : string) {   
+    return this.http.get(
+      this.URL_API + '/neovis/visualizacion' + `/${lema}` + `?initial_cypher=` + query
+      );
+    }
 }

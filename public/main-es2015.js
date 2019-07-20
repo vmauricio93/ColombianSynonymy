@@ -492,7 +492,7 @@ let SearchComponent = class SearchComponent {
         this.subscription = this.route.paramMap
             .subscribe(paramMap => {
             this.lema = paramMap.get('lema');
-            this.search(this.lema);
+            //this.search(this.lema);
         });
         var $grid = $('.grid').packery({
             columnWidth: '.grid-sizer',
@@ -698,49 +698,87 @@ __webpack_require__.r(__webpack_exports__);
 let NeovisService = class NeovisService {
     constructor() {
         this.contador = 0;
-        this.config = {
-            encrypted: "ENCRYPTION_ON",
-            container_id: "viz",
-            server_url: "bolt://hobby-hjjfgenlakdagbkeidbgijdl.dbs.graphenedb.com:24787",
-            server_user: "coltest",
-            server_password: "b.lTeC6LXhZkGp.XogYXwRqindRVqXX",
-            labels: {
-                "Lema": {
-                    caption: "lema",
-                    community: 0
+        this.options = {
+            nodes: {
+                shape: 'text',
+                font: {
+                    size: 26,
+                    strokeWidth: 7
                 },
-                "Definicion": {
-                    caption: (node) => node.properties.enunciadoDef.split(/((?:\w+ ){5})/g).filter(Boolean).join("\n"),
-                    community: "idDef"
+                scaling: {
+                    label: {
+                        enabled: true
+                    }
                 }
             },
-            relationships: {
-                "TIENE": {
-                    caption: false,
-                    thickness: 'tiene'
+            edges: {
+                arrows: {
+                    to: {
+                        enabled: true,
+                        type: 'arrow',
+                        scaleFactor: 0.5
+                            || false
+                    } // FIXME: handle default value
                 },
-                "ES": {
-                    caption: false,
-                    thickness: 'es'
+                length: 200
+            },
+            layout: {
+                improvedLayout: false,
+                hierarchical: {
+                    enabled: false,
+                    sortMethod: 'hubsize' //mirar
                 }
             },
-            initial_cypher: "MATCH (n :Lema) WITH n MATCH (m:Lema)-[r]-(o:Lema) RETURN *"
+            physics: {
+                // enabled: true,
+                // timestep: 0.5,
+                // stabilization: {
+                //     iterations: 10
+                // }
+                adaptiveTimestep: true,
+                // barnesHut: {
+                //     gravitationalConstant: -8000,
+                //     springConstant: 0.04,
+                //     springLength: 95
+                // },
+                stabilization: {
+                    iterations: 200,
+                    fit: true
+                }
+            }
+        };
+        this.dataVis = {
+            nodes: [],
+            edges: []
+        };
+        this.query = '';
+        this.labels = {
+            Lema: {
+                community: undefined
+            }
         };
     }
     draw() {
-        this.viz = new NeoVis.default(this.config);
-        return this.viz.render();
+        console.log(this.query);
+        this.dataVis = {
+            nodes: new vis.DataSet(Object.values(this.dataVis.nodes)),
+            edges: new vis.DataSet(Object.values(this.dataVis.edges))
+        };
+        this.network = new vis.Network(document.getElementById('viz'), this.dataVis, this.options);
+        return this.network;
+        // this.viz = new NeoVis.default(this.config);   
+        // return this.viz.render();
     }
     reload(lema) {
         if (lema != '' && lema != null) {
-            this.config.labels['Lema'].community = (node) => node.properties.lema.toLowerCase().startsWith(lema.toLowerCase()) ? 1 : 0;
-            this.config.initial_cypher = "MATCH p=(n :Lema)--(r:Definicion)--(m:Lema) WHERE n.lema =~ " + "'(?i)" + lema + ".*' RETURN DISTINCT n, r,  m, relationships(p)";
+            this.query = "MATCH p=(n :Lema)--(r:Definicion)--(m:Lema) WHERE n.lema =~ " + "'(?i)" + lema + ".*' RETURN DISTINCT n, r,  m, relationships(p)";
             //¿Que hacer con palabras que no tienen sinonimos, ej: coquitos? Con palabras como bluyin se pueden usar las variantes (enlazarlas a definiciones)
         }
         else {
-            this.config.initial_cypher = 'MATCH (n :Lema) WITH n MATCH (m:Lema)-[r]-(o:Lema) RETURN *';
+            this.labels['Lema'].community = 0;
+            this.query = 'MATCH (n :Lema) WITH n MATCH (m:Lema)-[r]-(o:Lema) RETURN *';
         }
-        this.draw();
+        //this.draw();
     }
 };
 NeovisService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -799,6 +837,12 @@ let SearchService = class SearchService {
     }
     searchWord(lema) {
         this.neovisService.reload(lema);
+        this.wordService.queryToNeovis(lema, this.neovisService.query)
+            .subscribe(res => {
+            this.neovisService.dataVis.nodes = res['nodes'];
+            this.neovisService.dataVis.edges = res['edges'];
+            this.neovisService.draw();
+        });
     }
 };
 SearchService.ctorParameters = () => [
@@ -836,7 +880,7 @@ __webpack_require__.r(__webpack_exports__);
 let WordService = class WordService {
     constructor(http) {
         this.http = http;
-        this.URL_API = 'http://localhost:3000';
+        this.URL_API = '';
         this.selectedWord = new _models_lema__WEBPACK_IMPORTED_MODULE_3__["Lema"]();
         this.searchedWord = new _models_lema__WEBPACK_IMPORTED_MODULE_3__["Lema"]();
     }
@@ -862,6 +906,9 @@ let WordService = class WordService {
     }
     searchWord(lema) {
         return this.http.get(this.URL_API + '/resultados' + `/${lema}`);
+    }
+    queryToNeovis(lema, query) {
+        return this.http.get(this.URL_API + '/neovis/visualizacion' + `/${lema}` + `?initial_cypher=` + query);
     }
 };
 WordService.ctorParameters = () => [

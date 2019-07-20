@@ -42,7 +42,15 @@ export class SearchService {
   }
 
   searchWord(lema : string) {
-    this.neovisService.reload(lema);    
+    this.neovisService.reload(lema);
+
+    this.wordService.queryToNeovis(lema,this.neovisService.query)
+    .subscribe(res => {      
+      this.neovisService.dataVis.nodes = res['nodes'];
+      this.neovisService.dataVis.edges = res['edges'];
+      this.neovisService.draw();
+    }); 
+    
   }
 
 }
