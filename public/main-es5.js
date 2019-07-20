@@ -724,10 +724,11 @@ var NeovisService = /** @class */ (function () {
     function NeovisService() {
         this.contador = 0;
         this.config = {
+            encrypted: "ENCRYPTION_ON",
             container_id: "viz",
-            server_url: "bolt://localhost:7687",
-            server_user: "neo4j",
-            server_password: "123",
+            server_url: "bolt://hobby-hjjfgenlakdagbkeidbgijdl.dbs.graphenedb.com:24787",
+            server_user: "coltest",
+            server_password: "b.lTeC6LXhZkGp.XogYXwRqindRVqXX",
             labels: {
                 "Lema": {
                     caption: "lema",
@@ -863,7 +864,7 @@ __webpack_require__.r(__webpack_exports__);
 var WordService = /** @class */ (function () {
     function WordService(http) {
         this.http = http;
-        this.URL_API = 'api/entradas';
+        this.URL_API = 'http://localhost:3000';
         this.selectedWord = new _models_lema__WEBPACK_IMPORTED_MODULE_3__["Lema"]();
         this.searchedWord = new _models_lema__WEBPACK_IMPORTED_MODULE_3__["Lema"]();
     }
