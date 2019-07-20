@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription = this.route.paramMap
     .subscribe(paramMap => {
       this.lema = paramMap.get('lema');
-      //this.search(this.lema);
+      this.search(this.lema);
     });
     
     var $grid = $('.grid').packery({
@@ -64,9 +64,10 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     if(searchedWord != null && searchedWord.trim().length !== 0) {
-      this.router.navigate(['/entrada', searchedWord]); // TODO: Esto hace que se llame el método dos veces
+      this.router.navigate(['/entrada', searchedWord]); // TODO: Esto hace que se llame el método dos veces (CORS?)
     } else {
       this.router.navigate(['/entrada', '_']);
+      searchedWord = '_';
     }
     
     this.searchService.searchWord(searchedWord);

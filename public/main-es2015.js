@@ -492,7 +492,7 @@ let SearchComponent = class SearchComponent {
         this.subscription = this.route.paramMap
             .subscribe(paramMap => {
             this.lema = paramMap.get('lema');
-            //this.search(this.lema);
+            this.search(this.lema);
         });
         var $grid = $('.grid').packery({
             columnWidth: '.grid-sizer',
@@ -519,10 +519,11 @@ let SearchComponent = class SearchComponent {
             searchedWord = form.value.autocomplete;
         }
         if (searchedWord != null && searchedWord.trim().length !== 0) {
-            this.router.navigate(['/entrada', searchedWord]); // TODO: Esto hace que se llame el método dos veces
+            this.router.navigate(['/entrada', searchedWord]); // TODO: Esto hace que se llame el método dos veces (CORS?)
         }
         else {
             this.router.navigate(['/entrada', '_']);
+            searchedWord = '_';
         }
         this.searchService.searchWord(searchedWord);
         this.wordService.searchWord(searchedWord)
@@ -697,7 +698,6 @@ __webpack_require__.r(__webpack_exports__);
 
 let NeovisService = class NeovisService {
     constructor() {
-        this.contador = 0;
         this.options = {
             nodes: {
                 shape: 'text',
@@ -759,18 +759,15 @@ let NeovisService = class NeovisService {
         };
     }
     draw() {
-        console.log(this.query);
         this.dataVis = {
             nodes: new vis.DataSet(Object.values(this.dataVis.nodes)),
             edges: new vis.DataSet(Object.values(this.dataVis.edges))
         };
         this.network = new vis.Network(document.getElementById('viz'), this.dataVis, this.options);
         return this.network;
-        // this.viz = new NeoVis.default(this.config);   
-        // return this.viz.render();
     }
     reload(lema) {
-        if (lema != '' && lema != null) {
+        if (lema != '' && lema != null && lema !== '_') {
             this.query = "MATCH p=(n :Lema)--(r:Definicion)--(m:Lema) WHERE n.lema =~ " + "'(?i)" + lema + ".*' RETURN DISTINCT n, r,  m, relationships(p)";
             //¿Que hacer con palabras que no tienen sinonimos, ej: coquitos? Con palabras como bluyin se pueden usar las variantes (enlazarlas a definiciones)
         }
@@ -778,7 +775,6 @@ let NeovisService = class NeovisService {
             this.labels['Lema'].community = 0;
             this.query = 'MATCH (n :Lema) WITH n MATCH (m:Lema)-[r]-(o:Lema) RETURN *';
         }
-        //this.draw();
     }
 };
 NeovisService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

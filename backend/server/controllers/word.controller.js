@@ -1,10 +1,9 @@
 // En el controlador se definen métodos de un objeto que se van a usar en las rutas
 // Estas funciones se utilizan para hacer las consultas a la base de datos
 const instance = require('../database');
-//const neovis = require('../neovis');
 const NeoVis = require('neovis.js');
-//const driver = require('../neo4j');
 const Neo4j = require('neo4j-driver').v1;
+const path = require('path');
 
 const wordCtrl = {};
 
@@ -69,7 +68,6 @@ wordCtrl.editWord = (req, res) => {
             idLema : req.body.idLema,
             lema : req.body.lema
         }).then(e => {
-            //console.log(e.properties());
             res.json({
                 'status' : "Palabra actualizada"
             });
@@ -129,7 +127,6 @@ wordCtrl.searchWord = (req, res) => {
             
             record._fields[2].forEach(node => {
                 var relacion = node[0][0].properties;
-                //console.log(relacion);
                 
                 var tipoRelacion = relacion['tiene'] || relacion['es']; 
                 
@@ -199,10 +196,10 @@ wordCtrl.neo4 = (req, res) => {
         labels: {
             "Lema": {
                 caption: "lema",
-                community: (node) => node.properties.lema.toLowerCase().startsWith(lema.toLowerCase()) ? 1 : 0
+                community: (node) => node.properties.lema.toLowerCase().startsWith(req.params.lema.toLowerCase()) ? 1 : 0
             },
             "Definicion": {
-              caption: (node) => node.properties.enunciadoDef.split(/((?:\w+ ){5})/g).filter(Boolean).join("\n"),
+              caption: (node) => node.properties.enunciadoDef.split(/((?:\w+ ){3})/g).filter(Boolean).join("\n"),
               community : "idDef"
           }
         },
@@ -227,24 +224,13 @@ wordCtrl.neo4 = (req, res) => {
         'b.lTeC6LXhZkGp.XogYXwRqindRVqXX'
         )
 
-    //console.log(neovis); 
-
-    neovis.render(res);  
-    
-
-    // let session = driver.session();
-    // session.run('MATCH (n:Lema) RETURN n')
-    // .then(results => {        
-    //     res.json(results)
-    // })
-    // .catch(err => {
-    //     res.json({
-    //         'status' : "Hubo un problema al cargar las palabras"
-    //     });
-    //     console.log(err);   
-    // });
+    neovis.render(res); 
     
 };
 
+wordCtrl.redirect = (req, res) => {
+    res.status(200)
+        .sendFile(path.join(__dirname, '../../../public/index.html'));
+}
 
 module.exports = wordCtrl;

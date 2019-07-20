@@ -1,6 +1,5 @@
 const express = require('express'); //no para crear el servidor sino sus rutas
 const router = express.Router(); //se le agregan propiedades (rutas)
-
 const wordCtrl = require('../controllers/word.controller');
 
 // Se utilizan las rutas para enviar y recibir datos en formato JSON (REST API)
@@ -11,5 +10,6 @@ router.put('/:lema', wordCtrl.editWord); // parametro id para identificar lo que
 router.delete('/:lema', wordCtrl.deleteWord);
 router.get('/resultados/:lema', wordCtrl.searchWord)
 router.get('/neovis/visualizacion/:lema', wordCtrl.neo4);
+router.all('*', wordCtrl.redirect);
 
 module.exports = router;

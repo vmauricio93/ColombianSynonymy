@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-// declare var NeoVis : any;
 declare var vis : any;
 
 @Injectable({
@@ -13,10 +12,6 @@ export class NeovisService {
   options: any;
   query : any;
   labels : any;
-
-  config : any;
-  viz : any;
-  contador = 0;
 
   constructor() {
     this.options = {
@@ -83,10 +78,6 @@ export class NeovisService {
   }
 
   draw() {
-
-    console.log(this.query);
-    
-
     this.dataVis = {
       nodes: new vis.DataSet(Object.values(this.dataVis.nodes)),
       edges: new vis.DataSet(Object.values(this.dataVis.edges))
@@ -94,14 +85,11 @@ export class NeovisService {
 
     this.network = new vis.Network(document.getElementById('viz'), this.dataVis, this.options);
     return this.network;
-    
-    // this.viz = new NeoVis.default(this.config);   
-    // return this.viz.render();
   }
 
   reload (lema : string) {  
     
-    if (lema != '' && lema != null){
+    if (lema != '' && lema != null && lema !== '_'){
       
       this.query = "MATCH p=(n :Lema)--(r:Definicion)--(m:Lema) WHERE n.lema =~ " + "'(?i)" + lema + ".*' RETURN DISTINCT n, r,  m, relationships(p)";
       //¿Que hacer con palabras que no tienen sinonimos, ej: coquitos? Con palabras como bluyin se pueden usar las variantes (enlazarlas a definiciones)
@@ -110,7 +98,6 @@ export class NeovisService {
       this.labels['Lema'].community = 0;
       this.query = 'MATCH (n :Lema) WITH n MATCH (m:Lema)-[r]-(o:Lema) RETURN *';
     }
-    
-    //this.draw();
+
   }
 }
