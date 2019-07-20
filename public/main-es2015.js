@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar-fixed\">\n  <nav>\n    <div class=\"nav-wrapper red darken-3\">\n      <a href=\"#!\" class=\"logo\" style=\"display: inline-block; height: 100%;\"><img style=\"vertical-align: middle\" class=\"responsive-img\" src=\"../assets/images/book.svg\" alt=\"diccionario\"></a>\n      <ul class=\"right hide-on-med-and-down\">\n        <li routerLinkActive=\"active current\" [routerLinkActiveOptions]=\"{ exact: true }\"><a routerLink=\"\">Inicio</a></li> <!--routerLink en lugar de href-->\n        <li routerLinkActive=\"active current\"><a routerLink=\"entrada/_\">Buscar entradas</a></li>\n        <li routerLinkActive=\"active current\"><a routerLink=\"editarEntradas\">Editar entradas</a></li>\n      </ul>\n    </div>\n  </nav>\n</div>\n\n<router-outlet></router-outlet> <!--Renderizar componente asociado con la ruta en el outlet-->\n\n\n\n\n\n\n\n"
+module.exports = "<div class=\"navbar-fixed\">\n  <nav>\n    <div class=\"nav-wrapper red darken-3\">\n      <a href=\"#!\" class=\"logo\" style=\"display: inline-block; height: 100%;\"><img style=\"vertical-align: middle\" class=\"responsive-img\" src=\"../assets/images/book.svg\" alt=\"diccionario\"></a>\n      <ul class=\"right hide-on-med-and-down\">\n        <li routerLinkActive=\"active current\" [routerLinkActiveOptions]=\"{ exact: true }\"><a routerLink=\"\">Inicio</a></li> <!--routerLink en lugar de href-->\n        <li routerLinkActive=\"active current\"><a routerLink=\"entrada/_\">Buscar entradas</a></li>\n        <li routerLinkActive=\"active current\"><a class = \"disabled\" routerLink=\"editarEntradas\">Editar entradas</a></li>\n      </ul>\n    </div>\n  </nav>\n</div>\n\n<router-outlet></router-outlet> <!--Renderizar componente asociado con la ruta en el outlet-->\n\n\n\n\n\n\n\n"
 
 /***/ }),
 
@@ -162,7 +162,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = ".disabled {\n    pointer-events: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxvQkFBb0I7QUFDeEIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kaXNhYmxlZCB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59Il19 */"
 
 /***/ }),
 
@@ -858,14 +858,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _models_lema__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/lema */ "./src/app/models/lema.ts");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 
 
  // para comunicarse con el backend
 
+
 let WordService = class WordService {
     constructor(http) {
         this.http = http;
-        this.URL_API = '';
+        this.URL_API = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].URL_API;
         this.selectedWord = new _models_lema__WEBPACK_IMPORTED_MODULE_3__["Lema"]();
         this.searchedWord = new _models_lema__WEBPACK_IMPORTED_MODULE_3__["Lema"]();
     }
