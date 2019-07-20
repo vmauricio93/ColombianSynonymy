@@ -10,5 +10,6 @@ router.post('/', wordCtrl.createWord);
 router.put('/:lema', wordCtrl.editWord); // parametro id para identificar lo que se quiere obtener especificamente. Con put se actualiza
 router.delete('/:lema', wordCtrl.deleteWord);
 router.get('/resultados/:lema', wordCtrl.searchWord)
+router.get('/neo4/j', wordCtrl.neo4);
 
 module.exports = router;
