@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http' // para comunicarse con el backend
 import { Lema } from '../models/lema';
 import { Entrada } from '../models/entrada';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class WordService {
   results : Entrada[];
   words: Lema[];
 
-  readonly URL_API = '';
+  readonly URL_API = environment.URL_API;
 
   constructor(private http : HttpClient) { //instanciar el modulo HttpClient para tenerlo disponible en el servicio
     this.selectedWord = new Lema();

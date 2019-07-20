@@ -19,7 +19,9 @@ app.use(express.json()); //para que el servidor entienda los datos en formato js
 app.use(cors()); // definir que servidores externos se pueden comunicar con este
 
 //Directorio de archivos estáticos (app de angular/frontend) -- Para cuando se despliegue
-app.use(express.static(path.join(__dirname,'../../public')));
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname,'../../public')));
+}
 
 // Rutas
 app.use('/', require('./routes/words.routes')); // /prefijo/otroPrefijo/ se agrega antes del path que se le está pasando desde las rutas
