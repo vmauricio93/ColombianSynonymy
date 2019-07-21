@@ -13,9 +13,9 @@
 </div>
 
 <ul class="sidenav" id="mobile-demo">
-  <li routerLinkActive="active current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="">Inicio</a></li> <!--routerLink en lugar de href-->
-  <li routerLinkActive="active current"><a routerLink="entrada/_">Buscar entradas</a></li>
-  <li routerLinkActive="active current"><a class = "disabled" routerLink="editar/entradas/">Editar entradas</a></li>
+  <li class="sidenav-close" routerLinkActive="active current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="">Inicio</a></li> <!--routerLink en lugar de href-->
+  <li class="sidenav-close" routerLinkActive="active current"><a routerLink="entrada/_">Buscar entradas</a></li>
+  <li class="sidenav-close" routerLinkActive="active current"><a class = "disabled" routerLink="editar/entradas/">Editar entradas</a></li>
 </ul>
 <router-outlet></router-outlet> <!--Renderizar componente asociado con la ruta en el outlet-->
 
