@@ -18,16 +18,17 @@ app.use(morgan('dev'));
 app.use(express.json()); //para que el servidor entienda los datos en formato json que vienen del navegador
 app.use(cors()); // definir que servidores externos se pueden comunicar con este
 
+// Rutas
+app.use('/api', require('./routes/words.routes')); // /prefijo/otroPrefijo/ se agrega antes del path que se le está pasando desde las rutas
+
 //Directorio de archivos estáticos (app de angular/frontend) -- Para cuando se despliegue
 if (process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname,'../../public')));
+    app.all('*', (req, res) => {
+        res.status(200).sendFile(path.join(__dirname, '../../public/index.html')); //Redireccionar si no puede obtener la ruta
+    }); 
 }
 
-// Rutas
-app.use('/api', require('./routes/words.routes')); // /prefijo/otroPrefijo/ se agrega antes del path que se le está pasando desde las rutas
-app.all('*', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, '../../public/index.html')); //Redireccionar si no puede obtener la ruta
-}); 
 // Inicializar el servidor
 app.listen(app.get('port'), () => {
     console.log('Servidor en puerto',app.get('port'));
