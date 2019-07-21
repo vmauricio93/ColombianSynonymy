@@ -10,5 +10,5 @@ input:focus {
 }
 
 .inv-submit {
-    display: none
+    visibility: hidden;
 }

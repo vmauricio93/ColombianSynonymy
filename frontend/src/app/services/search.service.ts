@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { WordService } from './word.service';
 import { Lema } from 'src/app/models/lema';
 import { NeovisService } from './neovis.service';
+import { Router } from '@angular/router';
 
 declare var $ : any;
 
@@ -12,7 +13,9 @@ export class SearchService {
 
   data : object;
 
-  constructor(private wordService : WordService, private neovisService : NeovisService) {
+  constructor(private wordService : WordService,
+    private neovisService : NeovisService,
+    private router : Router) {
     this.data = {};
    }
   
@@ -30,6 +33,11 @@ export class SearchService {
           data : this.data,
           onAutocomplete : (lema) => {
             this.wordService.searchedWord.lema = lema;
+
+            this.router.navigate(['/entrada', lema]); 
+            //$(".inv-submit").click();
+
+            //TODO: cuando se selecciona con el teclado hay que dar dos veces Enter. Solucion temporal con router
           }};
         
         $(document).ready(function(){

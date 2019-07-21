@@ -457,7 +457,7 @@ NotFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input:focus {\n    border-bottom: 1px solid #c62828 !important;\n    box-shadow: 0 1px 0 0 #c62828 !important;\n}\n.section-search input.autocomplete {\n    color: #000;\n}\n.input-field .prefix.active {\n    color: #000!important;\n}\n.inv-submit {\n    display: none\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwyQ0FBMkM7SUFDM0Msd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0k7QUFDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW5wdXQ6Zm9jdXMge1xuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjYzYyODI4ICFpbXBvcnRhbnQ7XG4gICAgYm94LXNoYWRvdzogMCAxcHggMCAwICNjNjI4MjggIWltcG9ydGFudDtcbn1cbi5zZWN0aW9uLXNlYXJjaCBpbnB1dC5hdXRvY29tcGxldGUge1xuICAgIGNvbG9yOiAjMDAwO1xufVxuLmlucHV0LWZpZWxkIC5wcmVmaXguYWN0aXZlIHtcbiAgICBjb2xvcjogIzAwMCFpbXBvcnRhbnQ7XG59XG5cbi5pbnYtc3VibWl0IHtcbiAgICBkaXNwbGF5OiBub25lXG59Il19 */"
+module.exports = "input:focus {\n    border-bottom: 1px solid #c62828 !important;\n    box-shadow: 0 1px 0 0 #c62828 !important;\n}\n.section-search input.autocomplete {\n    color: #000;\n}\n.input-field .prefix.active {\n    color: #000!important;\n}\n.inv-submit {\n    visibility: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwyQ0FBMkM7SUFDM0Msd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0ksa0JBQWtCO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dDpmb2N1cyB7XG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNjNjI4MjggIWltcG9ydGFudDtcbiAgICBib3gtc2hhZG93OiAwIDFweCAwIDAgI2M2MjgyOCAhaW1wb3J0YW50O1xufVxuLnNlY3Rpb24tc2VhcmNoIGlucHV0LmF1dG9jb21wbGV0ZSB7XG4gICAgY29sb3I6ICMwMDA7XG59XG4uaW5wdXQtZmllbGQgLnByZWZpeC5hY3RpdmUge1xuICAgIGNvbG9yOiAjMDAwIWltcG9ydGFudDtcbn1cblxuLmludi1zdWJtaXQge1xuICAgIHZpc2liaWxpdHk6IGhpZGRlbjtcbn0iXX0= */"
 
 /***/ }),
 
@@ -791,14 +791,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _word_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./word.service */ "./src/app/services/word.service.ts");
 /* harmony import */ var _neovis_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./neovis.service */ "./src/app/services/neovis.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 
 let SearchService = class SearchService {
-    constructor(wordService, neovisService) {
+    constructor(wordService, neovisService, router) {
         this.wordService = wordService;
         this.neovisService = neovisService;
+        this.router = router;
         this.data = {};
     }
     getData() {
@@ -813,6 +816,9 @@ let SearchService = class SearchService {
                 data: this.data,
                 onAutocomplete: (lema) => {
                     this.wordService.searchedWord.lema = lema;
+                    this.router.navigate(['/entrada', lema]);
+                    //$(".inv-submit").click();
+                    //TODO: cuando se selecciona con el teclado hay que dar dos veces Enter. Solucion temporal con router
                 }
             };
             $(document).ready(function () {
@@ -832,7 +838,8 @@ let SearchService = class SearchService {
 };
 SearchService.ctorParameters = () => [
     { type: _word_service__WEBPACK_IMPORTED_MODULE_2__["WordService"] },
-    { type: _neovis_service__WEBPACK_IMPORTED_MODULE_3__["NeovisService"] }
+    { type: _neovis_service__WEBPACK_IMPORTED_MODULE_3__["NeovisService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
 ];
 SearchService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
