@@ -549,6 +549,7 @@ var SearchComponent = /** @class */ (function () {
         });
         this.searchService.getData();
         $('.autocomplete').autocomplete('close');
+        $(document).activeElement.blur();
     };
     SearchComponent.ctorParameters = function () { return [
         { type: src_app_services_search_service__WEBPACK_IMPORTED_MODULE_2__["SearchService"] },

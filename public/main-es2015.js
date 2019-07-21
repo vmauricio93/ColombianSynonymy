@@ -533,6 +533,7 @@ let SearchComponent = class SearchComponent {
         });
         this.searchService.getData();
         $('.autocomplete').autocomplete('close');
+        $(document).activeElement.blur();
     }
 };
 SearchComponent.ctorParameters = () => [

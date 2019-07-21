@@ -77,6 +77,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
       this.searchService.getData();
 
       $('.autocomplete').autocomplete('close');
+      $(document).activeElement.blur();
       
     }
     
