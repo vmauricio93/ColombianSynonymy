@@ -75,9 +75,12 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         
       });
       this.searchService.getData();
+      
+      // $('input.autocomplete').keyup((e)=> {
+      //   if (e.keyCode == 13) {
 
-      $('.autocomplete').autocomplete('close');
-      $(document).activeElement.blur();
+      //   }
+      // });
       
     }
     

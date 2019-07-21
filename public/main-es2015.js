@@ -85,7 +85,7 @@ module.exports = "<p>not-found works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"section\">\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col s12\">\n                <form #searchForm = \"ngForm\" (ngSubmit)=\"search(searchForm)\" autocomplete=\"off\" >\n                    <div class=\"row\">\n                        <div class=\"input-field col s12\">\n                            <i class=\"material-icons prefix red-text text-darken-3\">textsms</i>\n                            <input type=\"text\" id=\"autocomplete-input\" class=\"autocomplete\" name=\"autocomplete\"  #autocomplete = \"ngModel\" [(ngModel)] = \"wordService.searchedWord.lema\" autofocus>\n                            <label for=\"autocomplete-input\">Buscar una entrada</label>\n                            <input class=\"inv-submit\" type=\"submit\"/>\n                        </div>\n                    </div>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"container\">\n    <div class=\"grid\">\n        <div>\n            <app-neovis></app-neovis>\n        </div>\n            <div *ngIf = \"!wordService.results || wordService.results.length == 0\">\n                <div class=\"grid-item\">\n                    <div class=\"card\">\n                        <div class=\"card-content\">\n                            <p>No se encontraron resultados</p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        \n        \n        \n        <div>\n            <app-entrada></app-entrada>\n        </div>\n    </div>\n    \n</div>\n"
+module.exports = "<div class=\"section\">\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col s12\">\n                <form #searchForm = \"ngForm\" (ngSubmit)=\"search(searchForm)\" autocomplete=\"off\" >\n                    <div class=\"row\">\n                        <div class=\"input-field col s12\">\n                            <i class=\"material-icons prefix red-text text-darken-3\">textsms</i>\n                            <input type=\"search\" id=\"autocomplete-input\" class=\"autocomplete\" name=\"autocomplete\"  #autocomplete = \"ngModel\" [(ngModel)] = \"wordService.searchedWord.lema\" autofocus>\n                            <label for=\"autocomplete-input\">Buscar una entrada</label>\n                            <input class=\"inv-submit\" type=\"submit\"/>\n                        </div>\n                    </div>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"container\">\n    <div class=\"grid\">\n        <div>\n            <app-neovis></app-neovis>\n        </div>\n            <div *ngIf = \"!wordService.results || wordService.results.length == 0\">\n                <div class=\"grid-item\">\n                    <div class=\"card\">\n                        <div class=\"card-content\">\n                            <p>No se encontraron resultados</p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        \n        \n        \n        <div>\n            <app-entrada></app-entrada>\n        </div>\n    </div>\n    \n</div>\n"
 
 /***/ }),
 
@@ -457,7 +457,7 @@ NotFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input:focus {\n    border-bottom: 1px solid #c62828 !important;\n    box-shadow: 0 1px 0 0 #c62828 !important;\n}\n.section-search input.autocomplete {\n    color: #000;\n}\n.input-field .prefix.active {\n    color: #000!important;\n}\n.inv-submit {\n    visibility: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwyQ0FBMkM7SUFDM0Msd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0ksa0JBQWtCO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dDpmb2N1cyB7XG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNjNjI4MjggIWltcG9ydGFudDtcbiAgICBib3gtc2hhZG93OiAwIDFweCAwIDAgI2M2MjgyOCAhaW1wb3J0YW50O1xufVxuLnNlY3Rpb24tc2VhcmNoIGlucHV0LmF1dG9jb21wbGV0ZSB7XG4gICAgY29sb3I6ICMwMDA7XG59XG4uaW5wdXQtZmllbGQgLnByZWZpeC5hY3RpdmUge1xuICAgIGNvbG9yOiAjMDAwIWltcG9ydGFudDtcbn1cblxuLmludi1zdWJtaXQge1xuICAgIHZpc2liaWxpdHk6IGhpZGRlbjtcbn0iXX0= */"
+module.exports = "input:focus {\n    border-bottom: 1px solid #c62828 !important;\n    box-shadow: 0 1px 0 0 #c62828 !important;\n}\n.section-search input.autocomplete {\n    color: #000;\n}\n.input-field .prefix.active {\n    color: #000!important;\n}\n.inv-submit {\n    visibility: hidden;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwyQ0FBMkM7SUFDM0Msd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0ksa0JBQWtCO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dDpmb2N1cyB7XG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNjNjI4MjggIWltcG9ydGFudDtcbiAgICBib3gtc2hhZG93OiAwIDFweCAwIDAgI2M2MjgyOCAhaW1wb3J0YW50O1xufVxuLnNlY3Rpb24tc2VhcmNoIGlucHV0LmF1dG9jb21wbGV0ZSB7XG4gICAgY29sb3I6ICMwMDA7XG59XG4uaW5wdXQtZmllbGQgLnByZWZpeC5hY3RpdmUge1xuICAgIGNvbG9yOiAjMDAwIWltcG9ydGFudDtcbn1cblxuLmludi1zdWJtaXQge1xuICAgIHZpc2liaWxpdHk6IGhpZGRlbjtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -532,8 +532,10 @@ let SearchComponent = class SearchComponent {
             this.wordService.results = res;
         });
         this.searchService.getData();
-        $('.autocomplete').autocomplete('close');
-        $(document).activeElement.blur();
+        // $('input.autocomplete').keyup((e)=> {
+        //   if (e.keyCode == 13) {
+        //   }
+        // });
     }
 };
 SearchComponent.ctorParameters = () => [
