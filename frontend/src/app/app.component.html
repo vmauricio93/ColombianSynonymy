@@ -1,7 +1,8 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper red darken-3">
-      <a href="#!" class="logo" style="display: inline-block; height: 100%;"><img style="vertical-align: middle" class="responsive-img" src="../assets/images/book.svg" alt="diccionario"></a>
+      <a routerLink="" class="brand-logo"><img src="../assets/images/book.svg" alt="diccionario"></a>
+      <a [routerLink]="['']" fragment="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li routerLinkActive="active current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="">Inicio</a></li> <!--routerLink en lugar de href-->
         <li routerLinkActive="active current"><a routerLink="entrada/_">Buscar entradas</a></li>
@@ -11,6 +12,11 @@
   </nav>
 </div>
 
+<ul class="sidenav" id="mobile-demo">
+  <li routerLinkActive="active current" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="">Inicio</a></li> <!--routerLink en lugar de href-->
+  <li routerLinkActive="active current"><a routerLink="entrada/_">Buscar entradas</a></li>
+  <li routerLinkActive="active current"><a class = "disabled" routerLink="editar/entradas/">Editar entradas</a></li>
+</ul>
 <router-outlet></router-outlet> <!--Renderizar componente asociado con la ruta en el outlet-->
 
 

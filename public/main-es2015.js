@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar-fixed\">\n  <nav>\n    <div class=\"nav-wrapper red darken-3\">\n      <a href=\"#!\" class=\"logo\" style=\"display: inline-block; height: 100%;\"><img style=\"vertical-align: middle\" class=\"responsive-img\" src=\"../assets/images/book.svg\" alt=\"diccionario\"></a>\n      <ul class=\"right hide-on-med-and-down\">\n        <li routerLinkActive=\"active current\" [routerLinkActiveOptions]=\"{ exact: true }\"><a routerLink=\"\">Inicio</a></li> <!--routerLink en lugar de href-->\n        <li routerLinkActive=\"active current\"><a routerLink=\"entrada/_\">Buscar entradas</a></li>\n        <li routerLinkActive=\"active current\"><a class = \"disabled\" routerLink=\"editar/entradas/\">Editar entradas</a></li>\n      </ul>\n    </div>\n  </nav>\n</div>\n\n<router-outlet></router-outlet> <!--Renderizar componente asociado con la ruta en el outlet-->\n\n\n\n\n\n\n\n"
+module.exports = "<div class=\"navbar-fixed\">\n  <nav>\n    <div class=\"nav-wrapper red darken-3\">\n      <a routerLink=\"\" class=\"brand-logo\"><img src=\"../assets/images/book.svg\" alt=\"diccionario\"></a>\n      <a [routerLink]=\"['']\" fragment=\"\" data-target=\"mobile-demo\" class=\"sidenav-trigger\"><i class=\"material-icons\">menu</i></a>\n      <ul class=\"right hide-on-med-and-down\">\n        <li routerLinkActive=\"active current\" [routerLinkActiveOptions]=\"{ exact: true }\"><a routerLink=\"\">Inicio</a></li> <!--routerLink en lugar de href-->\n        <li routerLinkActive=\"active current\"><a routerLink=\"entrada/_\">Buscar entradas</a></li>\n        <li routerLinkActive=\"active current\"><a class = \"disabled\" routerLink=\"editar/entradas/\">Editar entradas</a></li>\n      </ul>\n    </div>\n  </nav>\n</div>\n\n<ul class=\"sidenav\" id=\"mobile-demo\">\n  <li routerLinkActive=\"active current\" [routerLinkActiveOptions]=\"{ exact: true }\"><a routerLink=\"\">Inicio</a></li> <!--routerLink en lugar de href-->\n  <li routerLinkActive=\"active current\"><a routerLink=\"entrada/_\">Buscar entradas</a></li>\n  <li routerLinkActive=\"active current\"><a class = \"disabled\" routerLink=\"editar/entradas/\">Editar entradas</a></li>\n</ul>\n<router-outlet></router-outlet> <!--Renderizar componente asociado con la ruta en el outlet-->\n\n\n\n\n\n\n\n"
 
 /***/ }),
 
@@ -162,7 +162,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".disabled {\n    pointer-events: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxvQkFBb0I7QUFDeEIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kaXNhYmxlZCB7XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59Il19 */"
+module.exports = ".disabled {\n    pointer-events: none;\n}\n\n.brand-logo {\n    display: inline-block; height: 100%;\n}\n\nimg {\n    vertical-align: middle\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxvQkFBb0I7QUFDeEI7O0FBRUE7SUFDSSxxQkFBcUIsRUFBRSxZQUFZO0FBQ3ZDOztBQUVBO0lBQ0k7QUFDSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRpc2FibGVkIHtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbn1cblxuLmJyYW5kLWxvZ28ge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jazsgaGVpZ2h0OiAxMDAlO1xufVxuXG5pbWcge1xuICAgIHZlcnRpY2FsLWFsaWduOiBtaWRkbGVcbn0iXX0= */"
 
 /***/ }),
 
@@ -183,6 +183,16 @@ __webpack_require__.r(__webpack_exports__);
 let AppComponent = class AppComponent {
     constructor() {
         this.title = 'frontend';
+    }
+    ngOnInit() {
+    }
+    ngAfterViewInit() {
+        this.loadSideNav();
+    }
+    loadSideNav() {
+        $(document).ready(() => {
+            $(".sidenav").sidenav();
+        });
     }
 };
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

@@ -30,6 +30,7 @@ label.active {
 .grid-sizer,
 
 .grid-item {
+    min-width: 335px;
     max-width: 44%;
     float: left;
     margin: 0 0.5% 0 0.5%;

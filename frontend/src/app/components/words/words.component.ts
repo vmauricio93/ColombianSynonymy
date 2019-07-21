@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { WordService } from '../../services/word.service';
 import { NgForm } from '@angular/forms';
 import { Lema } from 'src/app/models/lema';
-import { NeovisService } from 'src/app/services/neovis.service';
-import { SearchService } from 'src/app/services/search.service';
 
 declare var M : any; // para que no tome la variable M desde typescript sino desde materialize (ya fue declarada)
 
