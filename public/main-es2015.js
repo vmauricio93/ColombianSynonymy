@@ -532,10 +532,11 @@ let SearchComponent = class SearchComponent {
             this.wordService.results = res;
         });
         this.searchService.getData();
-        // $('input.autocomplete').keyup((e)=> {
-        //   if (e.keyCode == 13) {
-        //   }
-        // });
+        $('input.autocomplete').keyup((e) => {
+            if (e.keyCode == 13) {
+                $('input.autocomplete').blur();
+            }
+        });
     }
 };
 SearchComponent.ctorParameters = () => [

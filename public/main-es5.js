@@ -548,10 +548,11 @@ var SearchComponent = /** @class */ (function () {
             _this.wordService.results = res;
         });
         this.searchService.getData();
-        // $('input.autocomplete').keyup((e)=> {
-        //   if (e.keyCode == 13) {
-        //   }
-        // });
+        $('input.autocomplete').keyup(function (e) {
+            if (e.keyCode == 13) {
+                $('input.autocomplete').blur();
+            }
+        });
     };
     SearchComponent.ctorParameters = function () { return [
         { type: src_app_services_search_service__WEBPACK_IMPORTED_MODULE_2__["SearchService"] },
