@@ -30,7 +30,6 @@ export class SearchService {
           data : this.data,
           onAutocomplete : (lema) => {
             this.wordService.searchedWord.lema = lema;
-            //TODO: cuando se selecciona con el teclado hay que dar dos veces Enter
           }};
         
         $(document).ready(function(){

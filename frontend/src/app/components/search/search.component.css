@@ -8,3 +8,7 @@ input:focus {
 .input-field .prefix.active {
     color: #000!important;
 }
+
+.inv-submit {
+    display: none
+}
