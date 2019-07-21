@@ -12,18 +12,19 @@ export class SearchService {
 
   data : object;
 
-  constructor(public wordService : WordService, public neovisService : NeovisService) {
+  constructor(private wordService : WordService, private neovisService : NeovisService) {
     this.data = {};
    }
   
   getData() {
     this.data = {};
     this.wordService.getWords()
-      .subscribe(res => {
-        this.wordService.words = res as Lema[];
-        this.wordService.words.forEach(word => {
-          this.data[word.lema as string] = null 
-        })
+    .subscribe(res => {
+      
+      this.wordService.words = res as Lema[];
+      this.wordService.words.forEach(word => {
+        this.data[word.lema as string] = null 
+      })
     
         var options = {
           data : this.data,
@@ -33,9 +34,9 @@ export class SearchService {
           }};
         
         $(document).ready(function(){
-          $('input.autocomplete').autocomplete(options);  
+          $('input.autocomplete').autocomplete(options);
+          
         });
-        
                 
       });
       

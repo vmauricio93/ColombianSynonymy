@@ -14,9 +14,9 @@ export class WordService {
   results : Entrada[];
   words: Lema[];
 
-  readonly URL_API = environment.URL_API;
+  readonly URL_API = 'api';
 
-  constructor(public http : HttpClient) { //instanciar el modulo HttpClient para tenerlo disponible en el servicio
+  constructor(private http : HttpClient) { //instanciar el modulo HttpClient para tenerlo disponible en el servicio
     this.selectedWord = new Lema();
     this.searchedWord = new Lema();
   }

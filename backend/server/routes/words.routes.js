@@ -10,6 +10,5 @@ router.put('/:lema', wordCtrl.editWord); // parametro id para identificar lo que
 router.delete('/:lema', wordCtrl.deleteWord);
 router.get('/resultados/:lema', wordCtrl.searchWord)
 router.get('/neovis/visualizacion/:lema', wordCtrl.neo4);
-router.all('*', wordCtrl.redirect);
 
 module.exports = router;

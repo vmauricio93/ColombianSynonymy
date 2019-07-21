@@ -16,10 +16,10 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   lema : string;
   private subscription : any;
 
-  constructor(public searchService : SearchService,
-    public router : Router,
-    public wordService : WordService,
-    public route : ActivatedRoute) { }
+  constructor(private searchService : SearchService,
+    private router : Router,
+    private wordService : WordService,
+    private route : ActivatedRoute) { }
 
   ngOnInit() {
 

@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar-fixed\">\n  <nav>\n    <div class=\"nav-wrapper red darken-3\">\n      <a href=\"#!\" class=\"logo\" style=\"display: inline-block; height: 100%;\"><img style=\"vertical-align: middle\" class=\"responsive-img\" src=\"../assets/images/book.svg\" alt=\"diccionario\"></a>\n      <ul class=\"right hide-on-med-and-down\">\n        <li routerLinkActive=\"active current\" [routerLinkActiveOptions]=\"{ exact: true }\"><a routerLink=\"\">Inicio</a></li> <!--routerLink en lugar de href-->\n        <li routerLinkActive=\"active current\"><a routerLink=\"entrada/_\">Buscar entradas</a></li>\n        <li routerLinkActive=\"active current\"><a class = \"disabled\" routerLink=\"editarEntradas\">Editar entradas</a></li>\n      </ul>\n    </div>\n  </nav>\n</div>\n\n<router-outlet></router-outlet> <!--Renderizar componente asociado con la ruta en el outlet-->\n\n\n\n\n\n\n\n"
+module.exports = "<div class=\"navbar-fixed\">\n  <nav>\n    <div class=\"nav-wrapper red darken-3\">\n      <a href=\"#!\" class=\"logo\" style=\"display: inline-block; height: 100%;\"><img style=\"vertical-align: middle\" class=\"responsive-img\" src=\"../assets/images/book.svg\" alt=\"diccionario\"></a>\n      <ul class=\"right hide-on-med-and-down\">\n        <li routerLinkActive=\"active current\" [routerLinkActiveOptions]=\"{ exact: true }\"><a routerLink=\"\">Inicio</a></li> <!--routerLink en lugar de href-->\n        <li routerLinkActive=\"active current\"><a routerLink=\"entrada/_\">Buscar entradas</a></li>\n        <li routerLinkActive=\"active current\"><a class = \"disabled\" routerLink=\"editar/entradas/\">Editar entradas</a></li>\n      </ul>\n    </div>\n  </nav>\n</div>\n\n<router-outlet></router-outlet> <!--Renderizar componente asociado con la ruta en el outlet-->\n\n\n\n\n\n\n\n"
 
 /***/ }),
 
@@ -134,7 +134,7 @@ var routes = [
         component: _components_search_search_component__WEBPACK_IMPORTED_MODULE_6__["SearchComponent"]
     },
     {
-        path: 'editarEntradas',
+        path: 'editar/entradas',
         component: _components_words_words_component__WEBPACK_IMPORTED_MODULE_4__["WordsComponent"]
     },
     {
@@ -584,19 +584,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_word_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/word.service */ "./src/app/services/word.service.ts");
 /* harmony import */ var src_app_models_lema__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/models/lema */ "./src/app/models/lema.ts");
-/* harmony import */ var src_app_services_neovis_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/neovis.service */ "./src/app/services/neovis.service.ts");
-/* harmony import */ var src_app_services_search_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/search.service */ "./src/app/services/search.service.ts");
-
-
 
 
 
 
 var WordsComponent = /** @class */ (function () {
-    function WordsComponent(wordService, neovisService, searchService) {
+    function WordsComponent(wordService) {
         this.wordService = wordService;
-        this.neovisService = neovisService;
-        this.searchService = searchService;
     }
     WordsComponent.prototype.ngOnInit = function () {
         this.getWords();
@@ -646,15 +640,12 @@ var WordsComponent = /** @class */ (function () {
         }
     };
     WordsComponent.ctorParameters = function () { return [
-        { type: _services_word_service__WEBPACK_IMPORTED_MODULE_2__["WordService"] },
-        { type: src_app_services_neovis_service__WEBPACK_IMPORTED_MODULE_4__["NeovisService"] },
-        { type: src_app_services_search_service__WEBPACK_IMPORTED_MODULE_5__["SearchService"] }
+        { type: _services_word_service__WEBPACK_IMPORTED_MODULE_2__["WordService"] }
     ]; };
     WordsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-words',
             template: __webpack_require__(/*! raw-loader!./words.component.html */ "./node_modules/raw-loader/index.js!./src/app/components/words/words.component.html"),
-            providers: [src_app_services_neovis_service__WEBPACK_IMPORTED_MODULE_4__["NeovisService"]],
             styles: [__webpack_require__(/*! ./words.component.css */ "./src/app/components/words/words.component.css")]
         })
     ], WordsComponent);
@@ -888,16 +879,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _models_lema__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/lema */ "./src/app/models/lema.ts");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
 
 
  // para comunicarse con el backend
 
-
 var WordService = /** @class */ (function () {
     function WordService(http) {
         this.http = http;
-        this.URL_API = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].URL_API;
+        this.URL_API = 'api';
         this.selectedWord = new _models_lema__WEBPACK_IMPORTED_MODULE_3__["Lema"]();
         this.searchedWord = new _models_lema__WEBPACK_IMPORTED_MODULE_3__["Lema"]();
     }
@@ -957,7 +946,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
-    URL_API: ''
+    URL_API: 'http://localhost:3000'
 };
 /*
  * For easier debugging in development mode, you can import the following file

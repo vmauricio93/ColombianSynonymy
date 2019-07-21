@@ -24,8 +24,10 @@ if (process.env.NODE_ENV === 'production'){
 }
 
 // Rutas
-app.use('/', require('./routes/words.routes')); // /prefijo/otroPrefijo/ se agrega antes del path que se le está pasando desde las rutas
-
+app.use('/api', require('./routes/words.routes')); // /prefijo/otroPrefijo/ se agrega antes del path que se le está pasando desde las rutas
+app.all('*', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, '../../public/index.html')); //Redireccionar si no puede obtener la ruta
+}); 
 // Inicializar el servidor
 app.listen(app.get('port'), () => {
     console.log('Servidor en puerto',app.get('port'));

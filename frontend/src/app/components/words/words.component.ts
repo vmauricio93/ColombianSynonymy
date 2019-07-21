@@ -10,14 +10,11 @@ declare var M : any; // para que no tome la variable M desde typescript sino des
 @Component({
   selector: 'app-words',
   templateUrl: './words.component.html',
-  styleUrls: ['./words.component.css'],
-  providers: [NeovisService]
+  styleUrls: ['./words.component.css']
 })
 export class WordsComponent implements OnInit {
 
-  constructor(public wordService : WordService,
-    public neovisService : NeovisService,
-    public searchService : SearchService) { }
+  constructor(private wordService : WordService) { }
 
   ngOnInit() {
     this.getWords();
@@ -49,6 +46,7 @@ export class WordsComponent implements OnInit {
       .subscribe(res => {
         this.wordService.words = res as Lema[];       
       })
+      
   }
 
   editWord(word : Lema) {

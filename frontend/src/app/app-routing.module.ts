@@ -16,7 +16,7 @@ const routes: Routes = [
     component : SearchComponent
   },
   {
-    path : 'editarEntradas',
+    path : 'editar/entradas', //importante separar por prefijos para evitar request raros
     component : WordsComponent
   },
   {
