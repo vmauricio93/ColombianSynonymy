@@ -532,6 +532,7 @@ let SearchComponent = class SearchComponent {
             this.wordService.results = res;
         });
         this.searchService.getData();
+        $('.autocomplete').autocomplete('close');
     }
 };
 SearchComponent.ctorParameters = () => [

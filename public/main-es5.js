@@ -548,6 +548,7 @@ var SearchComponent = /** @class */ (function () {
             _this.wordService.results = res;
         });
         this.searchService.getData();
+        $('.autocomplete').autocomplete('close');
     };
     SearchComponent.ctorParameters = function () { return [
         { type: src_app_services_search_service__WEBPACK_IMPORTED_MODULE_2__["SearchService"] },
