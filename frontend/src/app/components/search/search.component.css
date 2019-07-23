@@ -12,3 +12,7 @@ input:focus {
 .inv-submit {
     visibility: hidden;
 }
+
+input[type='search'] {
+    font-family: 'Libre Baskerville', serif;
+}

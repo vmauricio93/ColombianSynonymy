@@ -1,6 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 /*COLORES #c62828 #BC8379 #FFF6F3 #798897*/
 
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap');
+
+* {
+    font-family: 'Libre Baskerville', serif;
+    letter-spacing: -0.4px;
+}
+
 html {
     background-color: #FFF6F3;
 }
