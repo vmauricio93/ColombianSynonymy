@@ -30,13 +30,13 @@ export class NeovisService {
       edges: {
         arrows: {
           to: {
-              enabled: true,
+              enabled: false,
               type: 'arrow',
               scaleFactor: 0.5
             || false
           } // FIXME: handle default value
         },
-        length: 200
+        length: 200,
       },
       layout: {
         improvedLayout: false,
@@ -50,7 +50,7 @@ export class NeovisService {
         // timestep: 0.5,
         // stabilization: {
         //     iterations: 10
-        // }
+        // },
 
         adaptiveTimestep: true,
         // barnesHut: {

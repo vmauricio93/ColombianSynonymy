@@ -3,6 +3,7 @@ import { SearchService } from 'src/app/services/search.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WordService } from 'src/app/services/word.service';
 import { Entrada } from 'src/app/models/entrada';
+import { Abreviaturas } from 'src/app/models/abreviaturas';
 
 declare var $ : any;
 
@@ -15,11 +16,16 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   
   lema : string;
   private subscription : any;
+  showHelpCard : boolean;
+  abreviaturas : Abreviaturas;
   
   constructor(private searchService : SearchService,
     private router : Router,
     private wordService : WordService,
-    private route : ActivatedRoute) { }
+    private route : ActivatedRoute) {
+      this.showHelpCard = false;
+      this.abreviaturas = new Abreviaturas();
+     }
     
     ngOnInit() {
       
@@ -82,6 +88,12 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
       
+    }
+
+    showHelp() {
+       this.showHelpCard = !this.showHelpCard;
+       (document.querySelector('.help') as HTMLElement).style.transform = 
+       this.showHelpCard ? 'scale(1)' : 'scale(0)';
     }
     
   }

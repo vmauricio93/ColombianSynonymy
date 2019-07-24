@@ -205,8 +205,8 @@ wordCtrl.neo4 = (req, res) => {
         },
         relationships: {
             "TIENE": {
-                caption: false,
-                thickness: 'tiene'
+                caption: ['marcaRegional','marcaUso'],
+                thickness: '0.2'
             },
             "ES": {
               caption: false,

@@ -16,3 +16,18 @@ input:focus {
 input[type='search'] {
     font-family: 'Libre Baskerville', serif;
 }
+
+.help {
+    padding: 0.5em;
+    position: fixed;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}

@@ -85,7 +85,7 @@ module.exports = "<p>not-found works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"section\">\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col s12\">\n                <form #searchForm = \"ngForm\" (ngSubmit)=\"search(searchForm)\" autocomplete=\"off\" >\n                    <div class=\"row\">\n                        <div class=\"input-field col s12\">\n                            <i class=\"material-icons prefix red-text text-darken-3\">textsms</i>\n                            <input type=\"search\" id=\"autocomplete-input\" class=\"autocomplete\" name=\"autocomplete\"  #autocomplete = \"ngModel\" [(ngModel)] = \"wordService.searchedWord.lema\" autofocus>\n                            <label for=\"autocomplete-input\">Buscar una entrada</label>\n                            <input class=\"inv-submit\" type=\"submit\"/>\n                        </div>\n                    </div>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"container\">\n    <div class=\"grid\">\n        <div>\n            <app-neovis></app-neovis>\n        </div>\n            <div *ngIf = \"!wordService.results || wordService.results.length == 0\">\n                <div class=\"grid-item\">\n                    <div class=\"card\">\n                        <div class=\"card-content\">\n                            <p>No se encontraron resultados</p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        \n        \n        \n        <div>\n            <app-entrada></app-entrada>\n        </div>\n    </div>\n    \n</div>\n"
+module.exports = "<div class=\"section\">\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col s12\">\n                <form #searchForm = \"ngForm\" (ngSubmit)=\"search(searchForm)\" autocomplete=\"off\" >\n                    <div class=\"row\">\n                        <div class=\"input-field col s12\">\n                            <i class=\"material-icons prefix red-text text-darken-3\">textsms</i>\n                            <input type=\"search\" id=\"autocomplete-input\" class=\"autocomplete\" name=\"autocomplete\"  #autocomplete = \"ngModel\" [(ngModel)] = \"wordService.searchedWord.lema\" autofocus>\n                            <label for=\"autocomplete-input\">Buscar una entrada</label>\n                            <input class=\"inv-submit\" type=\"submit\"/>\n                        </div>\n                    </div>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"container\">\n    <div class=\"grid\">\n        <div>\n            <app-neovis></app-neovis>\n        </div>\n        <div *ngIf = \"!wordService.results || wordService.results.length == 0\">\n            <div class=\"grid-item\">\n                <div class=\"card\">\n                    <div class=\"card-content\">\n                        <p>No se encontraron resultados</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n        \n        \n        \n        <div>\n            <app-entrada></app-entrada>\n        </div>\n        \n    </div>\n    \n</div>\n\n<div (click)=\"showHelp()\" class=\"fixed-action-btn\">\n    <a class=\"btn-floating btn-medium red darken-3\">\n        <i class=\"large material-icons\">help</i>\n    </a>\n</div>\n\n<div class=\"container\">\n    <div class=\"row\">\n        <div class=\"col s12\">\n            <div class=\"card-panel white help\">\n                <table class=\"centered\">\n                    <thead>\n                        <tr>\n                            <th>Abreviatura</th>\n                            <th>Descripción</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr *ngFor='let abreviatura of abreviaturas.arrayAbreviaturas'>\n                            <td>{{ abreviatura[0] }}</td>\n                            <td>{{ abreviatura[1] }}</td>\n                        </tr>\n                    </tbody>\n                </table>\n                \n            </div>          \n        </div>\n    </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -339,7 +339,7 @@ var EntradaComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".showcase::after {\n    content: '';\n    height: 100vh;\n    width: 100%;\n    background-image: url('background.jpg');\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    display: block;\n    filter: blur(10px);\n    -webkit-filter: blur(10px);\n    -webkit-transition: all 1000ms;\n    transition: all 1000ms;\n    z-index: 0;\n}\n\n.showcase:hover::after {\n    filter: blur(0px);\n    -webkit-filter: blur(0px);\n}\n\n.content {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    position: absolute;\n    -webkit-box-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n            justify-content: center;\n    text-align: center;\n    left: 25%;\n    width: 50%;\n    height: 100vh;\n    z-index: 2;\n}\n\n.overlay {\n    position: absolute;\n    height: 100%;\n    width: 100%;\n    background-color: rgba(255, 246, 243, 0.6);\n    z-index: 1;\n}\n\n.title {\n    font-size: 2.2em;\n}\n\na {\n    font-size: 0.8em;\n    text-decoration: none;\n    color: #fff;\n    background-color: rgba(121, 136, 151, 0.6);\n    border: #fff 1px solid;\n    padding: 10px 20px;\n    border-radius: 10px;\n    -webkit-transition: -webkit-transform 80ms ease-in;\n    transition: -webkit-transform 80ms ease-in;\n    transition: transform 80ms ease-in;\n    transition: transform 80ms ease-in, -webkit-transform 80ms ease-in;\n}\n\na:hover {\n    background-color: rgba(121, 136, 151, 0.6);\n    -webkit-transform: scale(1.05);\n            transform: scale(1.05);\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9ob21lL2hvbWUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFdBQVc7SUFDWCxhQUFhO0lBQ2IsV0FBVztJQUNYLHVDQUE4RDtJQUM5RCxzQkFBc0I7SUFDdEIsNEJBQTRCO0lBQzVCLDJCQUEyQjtJQUMzQixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLDBCQUEwQjtJQUMxQiw4QkFBc0I7SUFBdEIsc0JBQXNCO0lBQ3RCLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGlCQUFpQjtJQUNqQix5QkFBeUI7QUFDN0I7O0FBRUE7SUFDSSxvQkFBYTtJQUFiLGFBQWE7SUFDYiw0QkFBc0I7SUFBdEIsNkJBQXNCO1lBQXRCLHNCQUFzQjtJQUN0QixrQkFBa0I7SUFDbEIseUJBQW1CO1lBQW5CLG1CQUFtQjtJQUNuQix3QkFBdUI7WUFBdkIsdUJBQXVCO0lBQ3ZCLGtCQUFrQjtJQUNsQixTQUFTO0lBQ1QsVUFBVTtJQUNWLGFBQWE7SUFDYixVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLFdBQVc7SUFDWCwwQ0FBMEM7SUFDMUMsVUFBVTtBQUNkOztBQUVBO0lBQ0ksZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksZ0JBQWdCO0lBQ2hCLHFCQUFxQjtJQUNyQixXQUFXO0lBQ1gsMENBQTBDO0lBQzFDLHNCQUFzQjtJQUN0QixrQkFBa0I7SUFDbEIsbUJBQW1CO0lBQ25CLGtEQUFrQztJQUFsQywwQ0FBa0M7SUFBbEMsa0NBQWtDO0lBQWxDLGtFQUFrQztBQUN0Qzs7QUFFQTtJQUNJLDBDQUEwQztJQUMxQyw4QkFBc0I7WUFBdEIsc0JBQXNCO0FBQzFCIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zaG93Y2FzZTo6YWZ0ZXIge1xuICAgIGNvbnRlbnQ6ICcnO1xuICAgIGhlaWdodDogMTAwdmg7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKCcuLi8uLi8uLi9hc3NldHMvaW1hZ2VzL2JhY2tncm91bmQuanBnJyk7XG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBmaWx0ZXI6IGJsdXIoMTBweCk7XG4gICAgLXdlYmtpdC1maWx0ZXI6IGJsdXIoMTBweCk7XG4gICAgdHJhbnNpdGlvbjogYWxsIDEwMDBtcztcbiAgICB6LWluZGV4OiAwO1xufVxuXG4uc2hvd2Nhc2U6aG92ZXI6OmFmdGVyIHtcbiAgICBmaWx0ZXI6IGJsdXIoMHB4KTtcbiAgICAtd2Via2l0LWZpbHRlcjogYmx1cigwcHgpO1xufVxuXG4uY29udGVudCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBsZWZ0OiAyNSU7XG4gICAgd2lkdGg6IDUwJTtcbiAgICBoZWlnaHQ6IDEwMHZoO1xuICAgIHotaW5kZXg6IDI7XG59XG5cbi5vdmVybGF5IHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNDYsIDI0MywgMC42KTtcbiAgICB6LWluZGV4OiAxO1xufVxuXG4udGl0bGUge1xuICAgIGZvbnQtc2l6ZTogMi4yZW07XG59XG5cbmEge1xuICAgIGZvbnQtc2l6ZTogMC44ZW07XG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMTIxLCAxMzYsIDE1MSwgMC42KTtcbiAgICBib3JkZXI6ICNmZmYgMXB4IHNvbGlkO1xuICAgIHBhZGRpbmc6IDEwcHggMjBweDtcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSA4MG1zIGVhc2UtaW47XG59XG5cbmE6aG92ZXIge1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMTIxLCAxMzYsIDE1MSwgMC42KTtcbiAgICB0cmFuc2Zvcm06IHNjYWxlKDEuMDUpO1xufVxuIl19 */"
+module.exports = ".showcase::after {\n    content: '';\n    height: 100vh;\n    width: 100%;\n    background-image: url('background.jpg');\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    display: block;\n    filter: blur(10px);\n    -webkit-filter: blur(10px);\n    -webkit-transition: all 1000ms;\n    transition: all 1000ms;\n    z-index: 0;\n}\n\n.showcase:hover::after {\n    filter: blur(0px);\n    -webkit-filter: blur(0px);\n}\n\n.content {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    position: absolute;\n    -webkit-box-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n            justify-content: center;\n    text-align: center;\n    left: 25%;\n    width: 50%;\n    height: 100vh;\n    z-index: 2;\n}\n\n.overlay {\n    position: absolute;\n    height: 100vh;\n    width: 100%;\n    background-color: rgba(255, 246, 243, 0.7);\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    display: block;\n    z-index: 1;\n}\n\n.title {\n    font-size: 2.2em;\n}\n\na {\n    font-size: 0.8em;\n    text-decoration: none;\n    color: #fff;\n    background-color: rgba(121, 136, 151, 0.6);\n    border: #fff 1px solid;\n    padding: 10px 20px;\n    border-radius: 10px;\n    -webkit-transition: -webkit-transform 80ms ease-in;\n    transition: -webkit-transform 80ms ease-in;\n    transition: transform 80ms ease-in;\n    transition: transform 80ms ease-in, -webkit-transform 80ms ease-in;\n}\n\na:hover {\n    background-color: rgba(121, 136, 151, 0.6);\n    -webkit-transform: scale(1.05);\n            transform: scale(1.05);\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9ob21lL2hvbWUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFdBQVc7SUFDWCxhQUFhO0lBQ2IsV0FBVztJQUNYLHVDQUE4RDtJQUM5RCxzQkFBc0I7SUFDdEIsNEJBQTRCO0lBQzVCLDJCQUEyQjtJQUMzQixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLDBCQUEwQjtJQUMxQiw4QkFBc0I7SUFBdEIsc0JBQXNCO0lBQ3RCLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGlCQUFpQjtJQUNqQix5QkFBeUI7QUFDN0I7O0FBRUE7SUFDSSxvQkFBYTtJQUFiLGFBQWE7SUFDYiw0QkFBc0I7SUFBdEIsNkJBQXNCO1lBQXRCLHNCQUFzQjtJQUN0QixrQkFBa0I7SUFDbEIseUJBQW1CO1lBQW5CLG1CQUFtQjtJQUNuQix3QkFBdUI7WUFBdkIsdUJBQXVCO0lBQ3ZCLGtCQUFrQjtJQUNsQixTQUFTO0lBQ1QsVUFBVTtJQUNWLGFBQWE7SUFDYixVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsYUFBYTtJQUNiLFdBQVc7SUFDWCwwQ0FBMEM7SUFDMUMsc0JBQXNCO0lBQ3RCLDRCQUE0QjtJQUM1QiwyQkFBMkI7SUFDM0IsY0FBYztJQUNkLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixxQkFBcUI7SUFDckIsV0FBVztJQUNYLDBDQUEwQztJQUMxQyxzQkFBc0I7SUFDdEIsa0JBQWtCO0lBQ2xCLG1CQUFtQjtJQUNuQixrREFBa0M7SUFBbEMsMENBQWtDO0lBQWxDLGtDQUFrQztJQUFsQyxrRUFBa0M7QUFDdEM7O0FBRUE7SUFDSSwwQ0FBMEM7SUFDMUMsOEJBQXNCO1lBQXRCLHNCQUFzQjtBQUMxQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2hvd2Nhc2U6OmFmdGVyIHtcbiAgICBjb250ZW50OiAnJztcbiAgICBoZWlnaHQ6IDEwMHZoO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybCgnLi4vLi4vLi4vYXNzZXRzL2ltYWdlcy9iYWNrZ3JvdW5kLmpwZycpO1xuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgZmlsdGVyOiBibHVyKDEwcHgpO1xuICAgIC13ZWJraXQtZmlsdGVyOiBibHVyKDEwcHgpO1xuICAgIHRyYW5zaXRpb246IGFsbCAxMDAwbXM7XG4gICAgei1pbmRleDogMDtcbn1cblxuLnNob3djYXNlOmhvdmVyOjphZnRlciB7XG4gICAgZmlsdGVyOiBibHVyKDBweCk7XG4gICAgLXdlYmtpdC1maWx0ZXI6IGJsdXIoMHB4KTtcbn1cblxuLmNvbnRlbnQge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgbGVmdDogMjUlO1xuICAgIHdpZHRoOiA1MCU7XG4gICAgaGVpZ2h0OiAxMDB2aDtcbiAgICB6LWluZGV4OiAyO1xufVxuXG4ub3ZlcmxheSB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGhlaWdodDogMTAwdmg7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI0NiwgMjQzLCAwLjcpO1xuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG4gICAgZGlzcGxheTogYmxvY2s7XG4gICAgei1pbmRleDogMTtcbn1cblxuLnRpdGxlIHtcbiAgICBmb250LXNpemU6IDIuMmVtO1xufVxuXG5hIHtcbiAgICBmb250LXNpemU6IDAuOGVtO1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICBjb2xvcjogI2ZmZjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDEyMSwgMTM2LCAxNTEsIDAuNik7XG4gICAgYm9yZGVyOiAjZmZmIDFweCBzb2xpZDtcbiAgICBwYWRkaW5nOiAxMHB4IDIwcHg7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gODBtcyBlYXNlLWluO1xufVxuXG5hOmhvdmVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDEyMSwgMTM2LCAxNTEsIDAuNik7XG4gICAgdHJhbnNmb3JtOiBzY2FsZSgxLjA1KTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -471,7 +471,7 @@ var NotFoundComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input:focus {\n    border-bottom: 1px solid #c62828 !important;\n    box-shadow: 0 1px 0 0 #c62828 !important;\n}\n.section-search input.autocomplete {\n    color: #000;\n}\n.input-field .prefix.active {\n    color: #000!important;\n}\n.inv-submit {\n    visibility: hidden;\n}\ninput[type='search'] {\n    font-family: 'Libre Baskerville', serif;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwyQ0FBMkM7SUFDM0Msd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0ksa0JBQWtCO0FBQ3RCO0FBRUE7SUFDSSx1Q0FBdUM7QUFDM0MiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NlYXJjaC9zZWFyY2guY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImlucHV0OmZvY3VzIHtcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2M2MjgyOCAhaW1wb3J0YW50O1xuICAgIGJveC1zaGFkb3c6IDAgMXB4IDAgMCAjYzYyODI4ICFpbXBvcnRhbnQ7XG59XG4uc2VjdGlvbi1zZWFyY2ggaW5wdXQuYXV0b2NvbXBsZXRlIHtcbiAgICBjb2xvcjogIzAwMDtcbn1cbi5pbnB1dC1maWVsZCAucHJlZml4LmFjdGl2ZSB7XG4gICAgY29sb3I6ICMwMDAhaW1wb3J0YW50O1xufVxuXG4uaW52LXN1Ym1pdCB7XG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xufVxuXG5pbnB1dFt0eXBlPSdzZWFyY2gnXSB7XG4gICAgZm9udC1mYW1pbHk6ICdMaWJyZSBCYXNrZXJ2aWxsZScsIHNlcmlmO1xufVxuIl19 */"
+module.exports = "input:focus {\n    border-bottom: 1px solid #c62828 !important;\n    box-shadow: 0 1px 0 0 #c62828 !important;\n}\n.section-search input.autocomplete {\n    color: #000;\n}\n.input-field .prefix.active {\n    color: #000!important;\n}\n.inv-submit {\n    visibility: hidden;\n}\ninput[type='search'] {\n    font-family: 'Libre Baskerville', serif;\n}\n.help {\n    padding: 0.5em;\n    position: fixed;\n    top: 5%;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    overflow: auto;\n    display: block;\n    -webkit-box-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n            justify-content: center;\n    -webkit-transform: scale(0);\n            transform: scale(0);\n    -webkit-transition: all 0.4s ease;\n    transition: all 0.4s ease;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwyQ0FBMkM7SUFDM0Msd0NBQXdDO0FBQzVDO0FBQ0E7SUFDSSxXQUFXO0FBQ2Y7QUFDQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0ksa0JBQWtCO0FBQ3RCO0FBRUE7SUFDSSx1Q0FBdUM7QUFDM0M7QUFFQTtJQUNJLGNBQWM7SUFDZCxlQUFlO0lBQ2YsT0FBTztJQUNQLE9BQU87SUFDUCxXQUFXO0lBQ1gsWUFBWTtJQUNaLGNBQWM7SUFDZCxjQUFjO0lBQ2QseUJBQW1CO1lBQW5CLG1CQUFtQjtJQUNuQix3QkFBdUI7WUFBdkIsdUJBQXVCO0lBQ3ZCLDJCQUFtQjtZQUFuQixtQkFBbUI7SUFDbkIsaUNBQXlCO0lBQXpCLHlCQUF5QjtBQUM3QiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW5wdXQ6Zm9jdXMge1xuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjYzYyODI4ICFpbXBvcnRhbnQ7XG4gICAgYm94LXNoYWRvdzogMCAxcHggMCAwICNjNjI4MjggIWltcG9ydGFudDtcbn1cbi5zZWN0aW9uLXNlYXJjaCBpbnB1dC5hdXRvY29tcGxldGUge1xuICAgIGNvbG9yOiAjMDAwO1xufVxuLmlucHV0LWZpZWxkIC5wcmVmaXguYWN0aXZlIHtcbiAgICBjb2xvcjogIzAwMCFpbXBvcnRhbnQ7XG59XG5cbi5pbnYtc3VibWl0IHtcbiAgICB2aXNpYmlsaXR5OiBoaWRkZW47XG59XG5cbmlucHV0W3R5cGU9J3NlYXJjaCddIHtcbiAgICBmb250LWZhbWlseTogJ0xpYnJlIEJhc2tlcnZpbGxlJywgc2VyaWY7XG59XG5cbi5oZWxwIHtcbiAgICBwYWRkaW5nOiAwLjVlbTtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1JTtcbiAgICBsZWZ0OiAwO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICBvdmVyZmxvdzogYXV0bztcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgIHRyYW5zZm9ybTogc2NhbGUoMCk7XG4gICAgdHJhbnNpdGlvbjogYWxsIDAuNHMgZWFzZTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -490,6 +490,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_search_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/search.service */ "./src/app/services/search.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var src_app_services_word_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/word.service */ "./src/app/services/word.service.ts");
+/* harmony import */ var src_app_models_abreviaturas__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/models/abreviaturas */ "./src/app/models/abreviaturas.ts");
+
 
 
 
@@ -501,6 +503,8 @@ var SearchComponent = /** @class */ (function () {
         this.router = router;
         this.wordService = wordService;
         this.route = route;
+        this.showHelpCard = false;
+        this.abreviaturas = new src_app_models_abreviaturas__WEBPACK_IMPORTED_MODULE_5__["Abreviaturas"]();
     }
     SearchComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -553,6 +557,11 @@ var SearchComponent = /** @class */ (function () {
                 $('input.autocomplete').blur();
             }
         });
+    };
+    SearchComponent.prototype.showHelp = function () {
+        this.showHelpCard = !this.showHelpCard;
+        document.querySelector('.help').style.transform =
+            this.showHelpCard ? 'scale(1)' : 'scale(0)';
     };
     SearchComponent.ctorParameters = function () { return [
         { type: src_app_services_search_service__WEBPACK_IMPORTED_MODULE_2__["SearchService"] },
@@ -671,6 +680,79 @@ var WordsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/abreviaturas.ts":
+/*!****************************************!*\
+  !*** ./src/app/models/abreviaturas.ts ***!
+  \****************************************/
+/*! exports provided: Abreviaturas */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Abreviaturas", function() { return Abreviaturas; });
+var Abreviaturas = /** @class */ (function () {
+    function Abreviaturas() {
+        this.arrayAbreviaturas = [
+            ['adj. invar.', 'adjetivo invariable'],
+            ['adj.', 'adjetivo'],
+            ['adj./s.', 'adjetivo/sustantivo'],
+            ['adv.', 'adverbio'],
+            ['afect.', 'afectivo'],
+            ['amaz.', 'amazónico'],
+            ['ant.', 'antioqueño caldense'],
+            ['cauc.-vall.', 'caucano valluno'],
+            ['cund.-boy.', 'cundiboyacense'],
+            ['delic.', 'delincuencial'],
+            ['dep.', 'deportes'],
+            ['desp.', 'despectivo'],
+            ['drog.', 'drogadicción'],
+            ['est.', 'estudiantil'],
+            ['euf.', 'eufemismo'],
+            ['f.', 'femenino'],
+            ['humor.', 'humorístico'],
+            ['inf.', 'informal'],
+            ['inform.', 'informática'],
+            ['insult.', 'insulto'],
+            ['interj.', 'interjección'],
+            ['irón.', 'irónico'],
+            ['juv.', 'juvenil'],
+            ['llan.', 'llanero'],
+            ['m.', 'masculino'],
+            ['nar.', 'nariñense'],
+            ['narc.', 'narcotráfico'],
+            ['obsol.', 'obsolescente'],
+            ['Pacíf.', 'Pacífico'],
+            ['pl.', 'plural'],
+            ['pref.', 'prefijo'],
+            ['prep.', 'preposición'],
+            ['prnl.', 'verbo pronominal'],
+            ['pron.', 'pronombre'],
+            ['rur.', 'rural'],
+            ['s. amb.', 'sustantivo ambiguo'],
+            ['s. com.', 'sustantivo común'],
+            ['s.', 'sustantivo'],
+            ['s./adj.', 'sustantivo/adjetivo'],
+            ['sant.', 'santandereano'],
+            ['suf.', 'sufijo'],
+            ['tabú', 'tabú'],
+            ['tb.', 'también'],
+            ['tol-huil.', 'tolimense huilense'],
+            ['u. m. c. prnl.', 'usado más como pronominal'],
+            ['u. m. en pl.', 'usado más en plural'],
+            ['u. t. c pl.', 'usado también como plural'],
+            ['u. t. c. prnl.', 'usado también como pronominal'],
+            ['urb.', 'urbano'],
+            ['v.', 'verbo'],
+            ['vulg.', 'vulgar']
+        ];
+    }
+    return Abreviaturas;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/models/lema.ts":
 /*!********************************!*\
   !*** ./src/app/models/lema.ts ***!
@@ -735,13 +817,13 @@ var NeovisService = /** @class */ (function () {
             edges: {
                 arrows: {
                     to: {
-                        enabled: true,
+                        enabled: false,
                         type: 'arrow',
                         scaleFactor: 0.5
                             || false
                     } // FIXME: handle default value
                 },
-                length: 200
+                length: 200,
             },
             layout: {
                 improvedLayout: false,
@@ -755,7 +837,7 @@ var NeovisService = /** @class */ (function () {
                 // timestep: 0.5,
                 // stabilization: {
                 //     iterations: 10
-                // }
+                // },
                 adaptiveTimestep: true,
                 // barnesHut: {
                 //     gravitationalConstant: -8000,
