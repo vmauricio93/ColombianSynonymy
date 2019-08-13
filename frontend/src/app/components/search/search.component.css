@@ -17,13 +17,18 @@ input[type='search'] {
     font-family: 'Libre Baskerville', serif;
 }
 
+.input-fiel.col.s12, .row {
+    margin: 0;
+
+}
+
 .help {
     padding: 0.5em;
     position: fixed;
-    top: 5.1%;
+    top: 10%;
     left: 2.5vw;
     width: 95vw;
-    height: 95vh;
+    height: 86vh;
     overflow: auto;
     display: block;
     align-items: center;

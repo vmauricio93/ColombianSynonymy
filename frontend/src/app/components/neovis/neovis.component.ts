@@ -7,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NeovisComponent implements OnInit {
 
-  constructor() { }
+  expandVis : boolean;
+  icon : string;
+
+  constructor() {
+    this.expandVis = false;
+    this.icon = 'add';
+  }
     
   ngOnInit() {
 
+  }
+
+  expandVisualization() {
+    this.expandVis = !this.expandVis;
+    (document.querySelector('.grid-item--width2') as HTMLElement).style.width =
+    this.expandVis ? '100%' : '54%';
+    this.icon = this.expandVis ? 'remove' : 'add';
+    
   }
 
 }

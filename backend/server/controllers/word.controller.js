@@ -199,8 +199,9 @@ wordCtrl.neo4 = (req, res) => {
                 community: (node) => node.properties.lema.toLowerCase().startsWith(req.params.lema.toLowerCase()) ? 1 : 0
             },
             "Definicion": {
-              caption: (node) => node.properties.enunciadoDef.split(/((?:\w+ ){3})/g).filter(Boolean).join("\n"),
-              community : "idDef"
+              caption: (node) => node.properties.enunciadoDef.split(/((?:\w+ ){3})/g).filter(Boolean).join("\n"), //</br> cuando se use la forma alternativa
+              community : 'idDef',
+              size : 0
           }
         },
         relationships: {

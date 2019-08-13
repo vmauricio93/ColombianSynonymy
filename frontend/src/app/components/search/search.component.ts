@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscription : any;
   showHelpCard : boolean;
   abreviaturas : Abreviaturas;
+
   
   constructor(private searchService : SearchService,
     private router : Router,

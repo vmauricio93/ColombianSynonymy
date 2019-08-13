@@ -49,8 +49,10 @@ label.active {
 
 .grid-item--width2 {
     float: right;
+    width: 54%;
     min-width: 54%;
     margin: 0 0.2%;
+    transition: width 0.4s ease-in-out;
 }
 .grid-item--width3 { width:  80%; }
 
