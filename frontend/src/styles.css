@@ -59,3 +59,13 @@ label.active {
 .grid-item--height2 { height: 200px; }
 .grid-item--height3 { height: 260px; }
 .grid-item--height4 { height: 360px; }
+
+@media only screen and (max-width: 600px) {
+    .grid-item {
+        max-width: 100%;
+    }
+
+    .grid-item--width2 {
+        width: 100%;
+    }
+}
